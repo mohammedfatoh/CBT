@@ -13,10 +13,15 @@
                                     
 </head>
 <body>
-    <header style="z-index:3;">
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+    <header style="">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light  border-bottom box-shadow mb-3"
+        style="z-index:3; background-color:white">
+        <img src="../images/logo.png" width=35px;height=35px />
             <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">CBT</a>
+               
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index"> 
+                      
+                    Home</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -41,7 +46,7 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
+    <footer class="border-top footer text-muted" style="display:block">
         <div class="container">
             &copy; 2022 - CBT - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>

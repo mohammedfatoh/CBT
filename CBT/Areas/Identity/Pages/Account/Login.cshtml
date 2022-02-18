@@ -20,7 +20,7 @@
                     <span asp-validation-for="Input.Email" class="text-danger"></span>
                 </div>
                 <div class="form-floating">
-                    <input asp-for="Input.Password" id="style" placeholder="E-mail" autocomplete="current-password" aria-required="true" />
+                    <input asp-for="Input.Password" id="style" placeholder="Password" autocomplete="current-password" aria-required="true" />
                      <!--<label asp-for="Input.Password" class="form-label"></label>-->
                     <span asp-validation-for="Input.Password" class="text-danger"></span>
                 </div>
@@ -33,7 +33,9 @@
                     </div>
                 </div>
                 <div>
-                    <button id="login-submit" type="submit" style="margin-bottom:15px" class="w-100 btn btn-lg btn-primary">Log in</button>
+                    <button id="login-submit" type="submit" style="margin-bottom:15px" class="w-100 btn btn-lg btn-primary">Log in
+                        <i class="fa-thin fa-right-to-bracket"></i>
+                    </button>
                 </div>
                 <div>
                     <p >

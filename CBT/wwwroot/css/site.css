@@ -32,7 +32,7 @@ body {
     padding: 20px;
     margin-top:0;
     border-radius:25px;
-    top:-30px;
+    top:-80px;
     height:0;
 
     
@@ -58,4 +58,70 @@ h1 {
     color: white;
     font-family: 'Redressed', cursive;
 }
+.landing
+{
+    display:none;
+}
+.landin:hover{
+    
+}
+.landing .text {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 45%;
+    padding: 50px;
+    background-color: rgb(15 116 143 / 70%);
+    border-radius:10px;
+    color: white;
+    display: flex;
+    justify-content: flex-end;
+    
+}
 
+    .landing .text .content {
+        max-width: 500px;
+        line-height: 1.5;
+    }
+
+.landing .change-background {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: white;
+    font-size: 25px;
+}
+
+
+
+.main-heading {
+    text-align: center;
+}
+
+    .main-heading h2 {
+        font-weight: normal;
+        font-size: 40px;
+        position: relative;
+        margin-bottom: 70px;
+        text-transform: uppercase;
+        font-family: 'Redressed', cursive;
+    }
+
+        .main-heading h2::before {
+            content: "";
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            height: 2px;
+            background-color: black;
+            bottom: -30px;
+            width: 120px;
+        }
+
+    .main-heading p {
+        width: 750px;
+        margin: 0 auto 100px;
+        max-width: 100%;
+        line-height: 1.5;
+    }

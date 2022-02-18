@@ -10,6 +10,8 @@ $(document).ready(function () {
             height: "380px"
         }, 1000, function () {
             $(".log").slideDown(500)
-        })
+        });
     });
+
+    $(".landing").show(1000);
 });
