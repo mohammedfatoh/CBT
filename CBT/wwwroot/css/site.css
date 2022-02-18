@@ -32,9 +32,21 @@ body {
     margin-top:0;
     border-radius:25px;
     top:-30px;
-    height:0;
-
-    
+    height:auto;
+}
+.centerRegister {
+    position: relative;
+    display: grid;
+    justify-content: left;
+    border: 1px solid black;
+    width: 800px;
+    margin: auto;
+    background-color: rgb(0, 0, 0, 0.85);
+    padding: 20px;
+    border-radius: 25px;
+    top: -30px;
+    height: auto;
+    padding-left:30px;
 }
 .log {
     display: none;
@@ -59,8 +71,8 @@ h1 {
 }
 #styleRegister {
     width: 350px;
-    right: 0;
     border-radius: 10px;
     margin-bottom: 15px;
+    padding-left:10px;
 }
 
