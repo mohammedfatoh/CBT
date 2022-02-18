@@ -2,12 +2,13 @@
 @model LoginModel
 
 @{
-   // ViewData["Title"] = "Log in";
+    //ViewData["Title"] = "Log in";
 }
 
 <h1>@ViewData["Title"]</h1>
 <div class="center">
-    <div class=" ">
+    <div class="log">
+        <div >
         <h1>Log In</h1>
         <section>
             <form id="account" method="post">
@@ -24,26 +25,27 @@
                     <span asp-validation-for="Input.Password" class="text-danger"></span>
                 </div>
                 <div>
-                    <div class="checkbox">
-                        <label asp-for="Input.RememberMe" class="form-label">
-                            <input class="form-check-input" asp-for="Input.RememberMe" />
+                    <div class="checkbox" >
+                        <label asp-for="Input.RememberMe" class="form-label"  style="color:white">
+                            <input class="form-check-input" asp-for="Input.RememberMe"  style="margin-right:5px"/>
                             @Html.DisplayNameFor(m => m.Input.RememberMe)
                         </label>
                     </div>
                 </div>
                 <div>
-                    <button id="login-submit" type="submit" class="w-100 btn btn-lg btn-primary">Log in</button>
+                    <button id="login-submit" type="submit" style="margin-bottom:15px" class="w-100 btn btn-lg btn-primary">Log in</button>
                 </div>
                 <div>
-                    <p>
-                        <a id="forgot-password" asp-page="./ForgotPassword">Forgot your password?</a>
-                    </p>
-                    <p>
+                    <p >
                         <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Register as a new user</a>
                     </p>
+                    <!--<p>
+                        <a id="forgot-password" asp-page="./ForgotPassword">Forgot your password?</a>
+                    </p>
+                    
                     <p>
                         <a id="resend-confirmation" asp-page="./ResendEmailConfirmation">Resend email confirmation</a>
-                    </p>
+                    </p>    -->
                 </div>
             </form>
         </section>
@@ -68,6 +70,7 @@
                 
             }
         </section>
+    </div>
     </div>
 </div>
 

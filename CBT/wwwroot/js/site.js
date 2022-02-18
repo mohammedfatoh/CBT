@@ -3,5 +3,13 @@
 
 // Write your JavaScript code.
 $(document).ready(function () {
-    $("input");
+    $(".center").animate({
+        top: "100px"
+    }, 500, function () {
+        $(this).animate({
+            height: "380px"
+        }, 1000, function () {
+            $(".log").slideDown(500)
+        })
+    });
 });
