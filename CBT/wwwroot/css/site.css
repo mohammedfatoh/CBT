@@ -21,7 +21,6 @@ body {
 }
 
 .center{
-    
     position:relative;
     display:grid;
     justify-content:center;
@@ -37,8 +36,8 @@ body {
 
     
 }
-.log{
-    display:none;
+.log {
+    display: none;
 }
 input {
     margin-bottom: 10px ;
@@ -57,5 +56,11 @@ h1 {
     text-align: center;
     color: white;
     font-family: 'Redressed', cursive;
+}
+#styleRegister {
+    width: 350px;
+    right: 0;
+    border-radius: 10px;
+    margin-bottom: 15px;
 }
 
