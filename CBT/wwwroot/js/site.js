@@ -7,11 +7,13 @@ $(document).ready(function () {
         top: "100px"
     }, 500, function () {
         $(this).animate({
-            height: "380px"
+            height: "400px"
         }, 1000, function () {
             $(".log").slideDown(500)
         });
     });
 
-    $(".landing").show(1000);
+    $("#asd").click(function () {
+       $(".asd2").remove();
+   });
 });
