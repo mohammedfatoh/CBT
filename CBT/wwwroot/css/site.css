@@ -168,21 +168,15 @@ h1 {
 }
 .vires {
     position: relative;
-    left: 50px;
-    width: 80px;
-    height: 80px;
-    animation: up-and-down 2s linear infinite;
-    z-index: -1;
-}
-
-.vires1 {
-    position:relative;
-    left: 70px;
+    bottom:-100px;
+    left: 350px;
+    top:1000px;
     width: 80px;
     height: 80px;
     animation: up-and-down1 2s linear infinite;
-        z-index:-1;
+    z-index: 2;
 }
+
 @keyframes up-and-down {
     0%, 100% {
         top: 0;
@@ -216,4 +210,7 @@ h1 {
 }
 #header-padding{
     padding:9px;
+}
+#demo1 {
+    width: 600px;
 }

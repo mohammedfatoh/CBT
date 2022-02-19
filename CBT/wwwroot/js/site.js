@@ -4,7 +4,7 @@
 // Write your JavaScript code.
 $(document).ready(function () {
     $(".center").animate({
-        top: "100px"
+        top: "50px"
     }, 500, function () {
         $(this).animate({
             height: "400px"

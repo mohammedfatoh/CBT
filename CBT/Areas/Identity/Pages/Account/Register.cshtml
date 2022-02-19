@@ -10,7 +10,7 @@
 <div class="log">
     <div>
         <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
-            <h1>Register<img src="../Areas/Identity/Pages/Account/Manage/3.jpg" /></h1>
+            <h1>Register</h1>
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
            
             <div class="form-floating">
@@ -29,7 +29,7 @@
                 <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
             </div>
             <button id="registerSubmit"  style="margin-left:50px; width:fit-content;" type="submit" class="btn btn-lg btn-primary">Register</button>
-        </form>
+            </form>
     </div>
     <div class="col-md-6 col-md-offset-2">
         <section>
@@ -52,9 +52,7 @@
         </section>
     </div>
 </div>
-<div class="motion">
 
-</div>
 </div>
 
 @section Scripts {

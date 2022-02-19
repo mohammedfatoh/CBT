@@ -12,33 +12,43 @@
     <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
   </div>
   <hr />
-  <div style="border:2px solid black;border-radius:10px;padding:20px;margin:10px;">
+  <div style="border:2px solid black;border-radius:10px;padding:20px 0px 0 20px;margin:10px;background-color:#DCDCDC">
     <label>Red Blood Cells (R.B.Cs):</label>
-    <input type="text" style="border:2px solid black; width:300px;border-radius:10px;"/>
-    <label>Red Blood Cells (R.B.Cs):</label>
-    <input type="text" style="border:2px solid black; width:300px;border-radius:10px;"/>
-    <label>Red Blood Cells (R.B.Cs):</label>
-    <input type="text" style="border:2px solid black; width:300px;border-radius:10px;"/>
-    <button id="login-submit" value="" type="submit" style="margin-bottom:15px" class="w-100 btn btn-lg btn-primary">Send values
-                        <i class="fa-thin fa-right-to-bracket"></i>
-                    </button>
+    <input type="text" placeholder="Enter Red Blood Cells" style="border:2px solid black; width:330px;border-radius:10px;margin-left:17px;"/>
+    <label >white Blood Cells (W.B.Cs):</label>
+    <input type="text" placeholder="Enter white Blood Cells" style="border:2px solid black; width:330px;border-radius:10px;"/>
+    <br />
+    <label>Platelets (PLT):</label>
+    <input type="text" placeholder="Enter Platelets" style="border:2px solid black; width:330px;border-radius:10px;margin-left:85px;"/>
+    <label>Haemoglobin :</label>
+    <input type="text" placeholder="Enter Haemoglobin" style="border:2px solid black; width:330px;border-radius:10px;margin-left:80px;"/>
+    <label>hematocrit :</label>
+    <input type="text" placeholder="Enter hematocrit" style="border:2px solid black; width:330px;border-radius:10px;margin-left:95px;"/>
+    <label>Glucose  :</label>
+    <input type="text" placeholder="Enter Glucose" style="border:2px solid black; width:330px;border-radius:10px;margin-left:115px;"/>
+    <button  type="submit" id="prim" style="padding:10px; position:relative;border-radius:10px;" class="btn-primary">Send values
+     </button>
+
+     <img src="~/images/vires2.png" class="vires" />
 </div>
-  <div class="motionVs">
-      <img src="~/images/vires2.png" class="vires" />
-       <img src="~/images/vires2.png" class="vires1" />
-  </div>
+      
 </div>
 
 <div class="offcanvas offcanvas-end" id="demo1">
-  <div class="offcanvas-header">
-    <h1 class="offcanvas-title">Heading</h1>
+  <div class="offcanvas-header" id="header-padding">
+    <h1 class="offcanvas-title header-ex" >
+    Please upload a picture of the analysis
+    </h1>
     <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
   </div>
-  <div class="offcanvas-body">
-    <p>Some text lorem ipsum.</p>
-    <p>Some text lorem ipsum.</p>
-    <p>Some text lorem ipsum.</p>
-    <button class="btn btn-secondary" type="button">A Button</button>
+    <hr />
+
+  <div style="border:2px solid black;border-radius:10px;padding:10px;margin:10px;background-color:#DCDCDC">
+    <label>Please Upload a Picture:</label>
+    <input type="file" style="border:2px solid black; width:360px;border-radius:10px;margin-left:17px;background-color:white;"/>
+
+    <button  type="submit" id="prim" style="padding:10px; position:relative;border-radius:10px;" class="btn-primary">Send values
+     </button>
   </div>
 </div>
 
