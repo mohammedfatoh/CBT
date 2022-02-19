@@ -14,8 +14,6 @@ namespace CBT.Models
 
         public int Age { get; set; }
 
-        public List<Patient> Patients { get; set; }
-
 
     }
 }

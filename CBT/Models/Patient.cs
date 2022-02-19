@@ -20,7 +20,7 @@ namespace CBT.Models
         public int doctor_id { get; set; }
 
         public Doctor Doctor { get; set; }
-        public List<Eximination> Eximinations { get; set; }
+        public int UserId { get; set; }
 
     }
 }

@@ -16,13 +16,27 @@ namespace CBT.Data
                base.OnModelCreating(builder);
             builder.Entity<ApplicationUser>().ToTable("Users");
 
-            builder.Entity<Doctor>()
-                .HasMany(p => p.Patients)
-                .WithOne(b => b.Doctor);
+            builder.Entity<Patient>(p => { 
+                p.HasOne<Doctor>()
+                .WithMany()
+                .HasForeignKey(x => x.doctor_id).IsRequired();
+       
+            });
 
-            builder.Entity<Patient>()
-                .HasMany(p => p.Eximinations)
-                .WithOne(b => b.Patient);
+
+            builder.Entity<Eximination>(ex => {
+                ex.HasOne<Patient>()
+                .WithMany()
+                .HasForeignKey(s => s.patient_Id).IsRequired();
+            });
+
+            builder.Entity<Patient>(pp =>
+            {
+                pp.HasOne<ApplicationUser>()
+                .WithMany()
+                .HasForeignKey(s => s.UserId).IsRequired();
+            });
+
 
             builder.Entity<Eximination>()
                 .HasMany(p => p.Treatments)
