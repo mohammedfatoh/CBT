@@ -2,13 +2,16 @@
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
-    <Nullable>enable</Nullable>
+    <Nullable>disable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UserSecretsId>aspnet-CBT-F1CEF0A1-B0FE-4760-8443-EE8D323DA3DD</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Areas\Identity\Pages\images\3.jpg" />
+    <Compile Remove="Areas\Identity\Pages\images\**" />
+    <Content Remove="Areas\Identity\Pages\images\**" />
+    <EmbeddedResource Remove="Areas\Identity\Pages\images\**" />
+    <None Remove="Areas\Identity\Pages\images\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -25,10 +28,6 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.2" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.2" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.2" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Areas\Identity\Pages\images\" />
   </ItemGroup>
 
 </Project>

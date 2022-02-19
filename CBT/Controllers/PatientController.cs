@@ -1,11 +1,21 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using CBT.Data;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace CBT.Controllers
 {
     public class PatientController : Controller
     {
-        public IActionResult Index()
+        private readonly ApplicationDbContext _context;
+
+        public PatientController(ApplicationDbContext context)
         {
+            _context = context;
+        }
+
+        public  IActionResult Index()
+        {
+
             return View();
         }
         public IActionResult Examination()
@@ -17,5 +27,6 @@ namespace CBT.Controllers
         {
             return View();
         }
+      
     }
 }

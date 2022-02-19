@@ -5,7 +5,7 @@ namespace CBT.Models
 {
     public class ApplicationUser  : IdentityUser
     {
-        public string Gendre { get; set;}
+        public GendreType Gendre { get; set;}
 
         public int Age { get; set;}
 
