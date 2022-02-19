@@ -8,31 +8,41 @@
 
 <div class="center centerRegister">
 <div class="log">
-    <div>
-        <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
-            <h1>Register</h1>
+    <div >
+     <h1>Register</h1>
+        <form id="registerForm" style="display:flex;flex-wrap:wrap;" asp-route-returnUrl="@Model.ReturnUrl" method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-floating">
                 <input asp-for="Input.Name" id="styleRegister" placeholder="Full-Name" autocomplete="Full-Name" aria-required="true" />
                 <!--<label asp-for="Input.Email"></label>-->
-                <span asp-validation-for="Input.Name" class="text-danger"></span>
+                <br /><span asp-validation-for="Input.Name" class="text-danger"></span>
+            </div>
+            <div class="form-floating">
+                <input asp-for="Input.Age" id="styleRegister" placeholder="Enter Your Age"  aria-required="true" />
+                <!--<label asp-for="Input.Email"></label>-->
+                <br /><span asp-validation-for="Input.Age" class="text-danger"></span>
+            </div>
+            <div class="form-floating">
+                <input asp-for="Input.Name" id="styleRegister" placeholder="Full-Name"  aria-required="true" />
+                <!--<label asp-for="Input.Email"></label>-->
+                <br /><span asp-validation-for="Input.Name" class="text-danger"></span>
             </div>
             <div class="form-floating">
                 <input asp-for="Input.Email" id="styleRegister" placeholder="E-mail" autocomplete="username" aria-required="true" />
                 <!--<label asp-for="Input.Email"></label>-->
-                <span asp-validation-for="Input.Email" class="text-danger"></span>
+                <br /><span asp-validation-for="Input.Email" class="text-danger"></span>
             </div>
             <div class="form-floating">
                 <input asp-for="Input.Password" id="styleRegister" placeholder="Password" autocomplete="new-password" aria-required="true" />
                 <!--<label asp-for="Input.Password"></label>-->
-                <span asp-validation-for="Input.Password" class="text-danger"></span>
+                <br /><span asp-validation-for="Input.Password" class="text-danger"></span>
             </div>
             <div class="form-floating">
                 <input asp-for="Input.ConfirmPassword" id="styleRegister" placeholder="Confirm Password" autocomplete="new-password" aria-required="true" />
                 <!--<label asp-for="Input.ConfirmPassword"></label>-->S
-                <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+                <br /><span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
             </div>
-            <button id="registerSubmit"  style="margin-left:50px; width:fit-content;" type="submit" class="btn btn-lg btn-primary">Register</button>
+            <button id="registerSubmit"  style="margin-left:300px; width:fit-content;" type="submit" class="btn btn-lg btn-primary">Register</button>
             </form>
     </div>
     <div class="col-md-6 col-md-offset-2">
