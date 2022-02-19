@@ -9,8 +9,7 @@ namespace CBT.Models
         [MaxLength(100)]
         public string Name { get; set; }
 
-        [MaxLength(10)]
-        public string Gendre { get; set; }
+        public GendreType Gendre { get; set; }
 
         public int Age { get; set; }
 
