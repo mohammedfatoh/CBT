@@ -214,3 +214,13 @@ h1 {
 #demo1 {
     width: 600px;
 }
+#styleRegister{
+    margin-bottom:30px;
+    margin-right:15px;
+}
+.text-danger {
+    position: absolute;
+    top: 50px;
+    font-size: 15px;
+    display: block;
+}
