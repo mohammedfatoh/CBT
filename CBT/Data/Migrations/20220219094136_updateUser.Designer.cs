@@ -4,6 +4,7 @@ using CBT.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CBT.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220219094136_updateUser")]
+    partial class updateUser
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -81,6 +83,7 @@ namespace CBT.Data.Migrations
                         .HasColumnType("nvarchar(256)");
 
                     b.Property<string>("name")
+                        .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
@@ -95,140 +98,6 @@ namespace CBT.Data.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("Users", (string)null);
-                });
-
-            modelBuilder.Entity("CBT.Models.Doctor", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<int>("Age")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Gendre")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Doctor");
-                });
-
-            modelBuilder.Entity("CBT.Models.Eximination", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<DateTime>("Createddate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("ImgUrl")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<float>("PLT")
-                        .HasColumnType("real");
-
-                    b.Property<int?>("PatientId")
-                        .HasColumnType("int");
-
-                    b.Property<float>("RBCS")
-                        .HasColumnType("real");
-
-                    b.Property<float>("Result")
-                        .HasColumnType("real");
-
-                    b.Property<float>("WBES")
-                        .HasColumnType("real");
-
-                    b.Property<int>("patient_Id")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("PatientId");
-
-                    b.ToTable("Eximination");
-                });
-
-            modelBuilder.Entity("CBT.Models.Patient", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<string>("Address")
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
-                    b.Property<int>("Age")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("DoctorId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Gendre")
-                        .HasMaxLength(10)
-                        .HasColumnType("int");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
-                    b.Property<int>("doctor_id")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("DoctorId");
-
-                    b.ToTable("Patient");
-                });
-
-            modelBuilder.Entity("CBT.Models.Treatment", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<float>("Amount")
-                        .HasColumnType("real");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Treatment");
-                });
-
-            modelBuilder.Entity("EximinationTreatment", b =>
-                {
-                    b.Property<int>("EximinationsId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("TreatmentsId")
-                        .HasColumnType("int");
-
-                    b.HasKey("EximinationsId", "TreatmentsId");
-
-                    b.HasIndex("TreatmentsId");
-
-                    b.ToTable("EximinationTreatments", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -364,39 +233,6 @@ namespace CBT.Data.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("CBT.Models.Eximination", b =>
-                {
-                    b.HasOne("CBT.Models.Patient", "Patient")
-                        .WithMany("Eximinations")
-                        .HasForeignKey("PatientId");
-
-                    b.Navigation("Patient");
-                });
-
-            modelBuilder.Entity("CBT.Models.Patient", b =>
-                {
-                    b.HasOne("CBT.Models.Doctor", "Doctor")
-                        .WithMany("Patients")
-                        .HasForeignKey("DoctorId");
-
-                    b.Navigation("Doctor");
-                });
-
-            modelBuilder.Entity("EximinationTreatment", b =>
-                {
-                    b.HasOne("CBT.Models.Eximination", null)
-                        .WithMany()
-                        .HasForeignKey("EximinationsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("CBT.Models.Treatment", null)
-                        .WithMany()
-                        .HasForeignKey("TreatmentsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -446,16 +282,6 @@ namespace CBT.Data.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("CBT.Models.Doctor", b =>
-                {
-                    b.Navigation("Patients");
-                });
-
-            modelBuilder.Entity("CBT.Models.Patient", b =>
-                {
-                    b.Navigation("Eximinations");
                 });
 #pragma warning restore 612, 618
         }

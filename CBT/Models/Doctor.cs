@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace CBT.Models
 {
@@ -6,12 +7,14 @@ namespace CBT.Models
     {
         public int Id { get; set; }
 
-        [MaxLength(100)]
+        [Required ,MaxLength(100)]
         public string Name { get; set; }
 
         public GendreType Gendre { get; set; }
 
         public int Age { get; set; }
+
+        public List<Patient> Patients { get; set; }
 
 
     }
