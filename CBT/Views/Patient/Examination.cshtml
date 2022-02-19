@@ -1,10 +1,35 @@
 ﻿@{
     ViewData["Title"] = "New Examination";
 }
-<body >
+
     <body>
 
-<div class="offcanvas offcanvas-end" id="demo">
+<div class="offcanvas offcanvas-start"  id="demo">
+  <div class="offcanvas-header" id="header-padding">
+    <h1 class="offcanvas-title header-ex" >
+    Please enter the analysis percentage
+    </h1>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+  </div>
+  <hr />
+  <div style="border:2px solid black;border-radius:10px;padding:20px;margin:10px;">
+    <label>Red Blood Cells (R.B.Cs):</label>
+    <input type="text" style="border:2px solid black; width:300px;border-radius:10px;"/>
+    <label>Red Blood Cells (R.B.Cs):</label>
+    <input type="text" style="border:2px solid black; width:300px;border-radius:10px;"/>
+    <label>Red Blood Cells (R.B.Cs):</label>
+    <input type="text" style="border:2px solid black; width:300px;border-radius:10px;"/>
+    <button id="login-submit" value="" type="submit" style="margin-bottom:15px" class="w-100 btn btn-lg btn-primary">Send values
+                        <i class="fa-thin fa-right-to-bracket"></i>
+                    </button>
+</div>
+  <div class="motionVs">
+      <img src="~/images/vires2.png" class="vires" />
+       <img src="~/images/vires2.png" class="vires1" />
+  </div>
+</div>
+
+<div class="offcanvas offcanvas-end" id="demo1">
   <div class="offcanvas-header">
     <h1 class="offcanvas-title">Heading</h1>
     <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
@@ -17,14 +42,17 @@
   </div>
 </div>
 
-<div class="container-fluid mt-3">
-  <h3>Offcanvas Sidebar</h3>
-  <p>Offcanvas is similar to modals, except that it is often used as a sidebar.</p>
+
+<div class="container-fluid mt-3 container1">
+  <h3 >Hello Ahmed</h3>
+  <p>We are happy to have you with us, and we wish you a speedy recovery.</p>
   <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#demo">
-    Open Offcanvas Sidebar
+    Enter the data 
+  </button>
+  <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#demo1">
+    Upload an analysis image
   </button>
 </div>
 
-</body>
 </body>
 

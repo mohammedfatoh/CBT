@@ -148,3 +148,72 @@ h1 {
         max-width: 100%;
         line-height: 1.5;
     }
+.container1 {
+    text-align: center;
+    background-color: rgb(0, 0, 0, 0.85);
+    padding:20px;
+    color:white;
+    border-radius:10px;
+    width:60%;
+}
+    .container1 h3 {
+        ont-family: 'Redressed', cursive;
+    }
+    .container1 button {
+        margin: 5px;
+    }
+.motionVs{
+    position:absolute;
+    bottom:0;
+}
+.vires {
+    position: relative;
+    left: 50px;
+    width: 80px;
+    height: 80px;
+    animation: up-and-down 2s linear infinite;
+    z-index: -1;
+}
+
+.vires1 {
+    position:relative;
+    left: 70px;
+    width: 80px;
+    height: 80px;
+    animation: up-and-down1 2s linear infinite;
+        z-index:-1;
+}
+@keyframes up-and-down {
+    0%, 100% {
+        top: 0;
+    }
+
+    50% {
+        top: -40px;
+    }
+}
+@keyframes up-and-down1 {
+    0%, 100% {
+        top: -40px;
+        
+    }
+
+    50% {
+        top: 0;
+    }
+}
+.header-ex{
+    color:black;
+    line-height:1;
+
+}
+.blood{
+    border-color:black;
+}
+#demo{
+    width:600px;
+
+}
+#header-padding{
+    padding:9px;
+}
