@@ -1,5 +1,11 @@
-﻿@{
+﻿@using Microsoft.AspNetCore.Identity
+@model CBT.Models.Eximination
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+@{
     ViewData["Title"] = "New Examination";
+ 
 }
 
     <body>
@@ -12,25 +18,58 @@
     <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
   </div>
   <hr />
-  <div style="border:2px solid black;border-radius:10px;padding:20px 0px 0 20px;margin:10px;background-color:#DCDCDC">
-    <label>Red Blood Cells (R.B.Cs):</label>
-    <input type="text" placeholder="Enter Red Blood Cells" style="border:2px solid black; width:330px;border-radius:10px;margin-left:17px;"/>
-    <label >white Blood Cells (W.B.Cs):</label>
-    <input type="text" placeholder="Enter white Blood Cells" style="border:2px solid black; width:330px;border-radius:10px;"/>
+ @* <div style="border:2px solid black;border-radius:10px;padding:20px 0px 0 20px;margin:10px;background-color:#dcdcdc">
+    <label>red blood cells (r.b.cs):</label>
+    <input type="text" placeholder="enter red blood cells" style="border:2px solid black; width:330px;border-radius:10px;margin-left:17px;"/>
+    <label >white blood cells (w.b.cs):</label>
+    <input type="text" placeholder="enter white blood cells" style="border:2px solid black; width:330px;border-radius:10px;"/>
     <br />
-    <label>Platelets (PLT):</label>
-    <input type="text" placeholder="Enter Platelets" style="border:2px solid black; width:330px;border-radius:10px;margin-left:85px;"/>
-    <label>Haemoglobin :</label>
-    <input type="text" placeholder="Enter Haemoglobin" style="border:2px solid black; width:330px;border-radius:10px;margin-left:80px;"/>
+    <label>platelets (plt):</label>
+    <input type="text" placeholder="enter platelets" style="border:2px solid black; width:330px;border-radius:10px;margin-left:85px;"/>
+    <label>haemoglobin :</label>
+    <input type="text" placeholder="enter haemoglobin" style="border:2px solid black; width:330px;border-radius:10px;margin-left:80px;"/>
     <label>hematocrit :</label>
-    <input type="text" placeholder="Enter hematocrit" style="border:2px solid black; width:330px;border-radius:10px;margin-left:95px;"/>
-    <label>Glucose  :</label>
-    <input type="text" placeholder="Enter Glucose" style="border:2px solid black; width:330px;border-radius:10px;margin-left:115px;"/>
-    <button  type="submit" id="prim" style="padding:10px; position:relative;border-radius:10px;" class="btn-primary">Send values
+    <input type="text" placeholder="enter hematocrit" style="border:2px solid black; width:330px;border-radius:10px;margin-left:95px;"/>
+    <label>glucose  :</label>
+    <input type="text" placeholder="enter glucose" style="border:2px solid black; width:330px;border-radius:10px;margin-left:115px;"/>
+    <button  type="submit"  id="prim" style="padding:10px; position:relative;border-radius:10px;" class="btn-primary">send values
      </button>
 
      <img src="~/images/vires2.png" class="vires" />
 </div>
+*@
+<form asp-action="Examination" asp-controller="Patient" asp-antiforgery="true" method="post" style="width:50%">
+    <div asp-validation-summary="None" class="text-danger"></div>
+    <div>
+        <label asp-for="RBCS">Red Blood Cells (R.B.Cs):</</label>
+        <input asp-for="RBCS" class="form-control" 
+        placeholder="enter red blood cells"
+        style="border:2px solid black; width:330px;border-radius:10px;margin-left:17px;"/>
+        <span asp-validation-for="RBCS" class="text-danger"></span>
+    </div>
+
+     <div>
+        <label asp-for="WBES">white blood cells (w.b.cs):</</label>
+        <input asp-for="WBES" class="form-control" 
+        placeholder="enter white blood cells"
+        style="border:2px solid black; width:330px;border-radius:10px;"/>
+        <span asp-validation-for="WBES" class="text-danger"></span>
+    </div>
+     <br/>
+     <div>
+        <label asp-for="PLT">platelets (plt):</</label>
+        <input asp-for="PLT" class="form-control" 
+        placeholder="enter platelets"
+        style="border:2px solid black; width:330px;border-radius:10px;margin-left:85px;"/>
+        <span asp-validation-for="PLT" class="text-danger"></span>
+    </div>
+
+    <div>
+        <input type="hidden" value="@UserManager.GetUserId(User)" name="IdUser"/>
+    </div>
+
+    <input type="submit" class="btn btn-success" value="Save" />
+</form>
       
 </div>
 

@@ -13,9 +13,9 @@
         <form id="registerForm" style="display:flex;flex-wrap:wrap;" asp-route-returnUrl="@Model.ReturnUrl" method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-floating">
-                <input asp-for="Input.Name" id="styleRegister" placeholder="Full-Name" autocomplete="Full-Name" aria-required="true" />
+                <input asp-for="Input.FullName" id="styleRegister" placeholder="Full-Name" autocomplete="Full-Name" aria-required="true" />
                 <!--<label asp-for="Input.Email"></label>-->
-                <br /><span asp-validation-for="Input.Name" class="text-danger"></span>
+                <br /><span asp-validation-for="Input.FullName" class="text-danger"></span>
             </div>
             <div class="form-floating">
                 <input asp-for="Input.Age" id="styleRegister" placeholder="Enter Your Age"  aria-required="true" />
@@ -23,13 +23,10 @@
                 <br /><span asp-validation-for="Input.Age" class="text-danger"></span>
             </div>
             <div class="form-floating">
-                
-                <select name="salutation" id="salutation" sp-for="Input.Gendre" class="styleRegister" aria-required="true">
-                <option disabled selected>Please pick one</option>
-                <option>Male</option>
-                <option>Female</option>
+                <select asp-for="Input.Gendre"
+                  asp-items="Html.GetEnumSelectList<GendreType>()">
+                    <option   disabled selected>Please pick one</option>
                 </select>
-                <!--<label asp-for="Input.Email"></label>-->
                 <br /><span asp-validation-for="Input.Gendre" class="text-danger"></span>
             </div>
             <div class="form-floating">

@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CBT.Models
 {
@@ -20,13 +21,13 @@ namespace CBT.Models
        
         public float   Result     { get; set; }
 
+        [Required]
         public DateTime Createddate { get; set; }
 
+        [ForeignKey("patient_Id")]
         public int patient_Id { get; set; }
 
-        public Patient Patient { get; set; }
-
-        public ICollection<Treatment>  Treatments { get; set; }
+        public  virtual Patient Patient { get; set; }
 
     }
 }

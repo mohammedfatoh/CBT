@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CBT.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220219142301_Fatoh")]
-    partial class Fatoh
+    [Migration("20220422151817_addingpropretyProfilePicture")]
+    partial class addingpropretyProfilePicture
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -46,6 +46,11 @@ namespace CBT.Data.Migrations
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("bit");
 
+                    b.Property<string>("FullName")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
                     b.Property<int>("Gendre")
                         .HasColumnType("int");
 
@@ -72,6 +77,9 @@ namespace CBT.Data.Migrations
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("bit");
 
+                    b.Property<byte[]>("ProfilePicture")
+                        .HasColumnType("varbinary(max)");
+
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("nvarchar(max)");
 
@@ -81,10 +89,6 @@ namespace CBT.Data.Migrations
                     b.Property<string>("UserName")
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
-
-                    b.Property<string>("name")
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
 
                     b.HasKey("Id");
 
@@ -96,7 +100,7 @@ namespace CBT.Data.Migrations
                         .HasDatabaseName("UserNameIndex")
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
-                    b.ToTable("Users", (string)null);
+                    b.ToTable("AspNetUsers", (string)null);
                 });
 
             modelBuilder.Entity("CBT.Models.Doctor", b =>
@@ -118,9 +122,14 @@ namespace CBT.Data.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
                     b.HasKey("Id");
 
-                    b.ToTable("Doctor");
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Doctors");
                 });
 
             modelBuilder.Entity("CBT.Models.Eximination", b =>
@@ -159,9 +168,7 @@ namespace CBT.Data.Migrations
 
                     b.HasIndex("PatientId");
 
-                    b.HasIndex("patient_Id");
-
-                    b.ToTable("Eximination");
+                    b.ToTable("Eximinations");
                 });
 
             modelBuilder.Entity("CBT.Models.Patient", b =>
@@ -192,7 +199,6 @@ namespace CBT.Data.Migrations
                         .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("UserId")
-                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<int>("doctor_id")
@@ -204,9 +210,7 @@ namespace CBT.Data.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.HasIndex("doctor_id");
-
-                    b.ToTable("Patient");
+                    b.ToTable("Patients");
                 });
 
             modelBuilder.Entity("CBT.Models.Treatment", b =>
@@ -220,27 +224,28 @@ namespace CBT.Data.Migrations
                     b.Property<float>("Amount")
                         .HasColumnType("real");
 
+                    b.Property<int>("Exmination_id")
+                        .HasColumnType("int");
+
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("PatientId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("eximinationId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("patient_Id")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
-                    b.ToTable("Treatment");
-                });
+                    b.HasIndex("PatientId");
 
-            modelBuilder.Entity("EximinationTreatment", b =>
-                {
-                    b.Property<int>("EximinationsId")
-                        .HasColumnType("int");
+                    b.HasIndex("eximinationId");
 
-                    b.Property<int>("TreatmentsId")
-                        .HasColumnType("int");
-
-                    b.HasKey("EximinationsId", "TreatmentsId");
-
-                    b.HasIndex("TreatmentsId");
-
-                    b.ToTable("EximinationTreatments", (string)null);
+                    b.ToTable("Treatments");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -267,7 +272,7 @@ namespace CBT.Data.Migrations
                         .HasDatabaseName("RoleNameIndex")
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
-                    b.ToTable("AspNetRoles", (string)null);
+                    b.ToTable("Roles", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -292,7 +297,7 @@ namespace CBT.Data.Migrations
 
                     b.HasIndex("RoleId");
 
-                    b.ToTable("AspNetRoleClaims", (string)null);
+                    b.ToTable("Roleclaims ", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
@@ -317,7 +322,7 @@ namespace CBT.Data.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("AspNetUserClaims", (string)null);
+                    b.ToTable("UserClaims", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
@@ -339,7 +344,7 @@ namespace CBT.Data.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("AspNetUserLogins", (string)null);
+                    b.ToTable("UserLogins", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
@@ -354,7 +359,7 @@ namespace CBT.Data.Migrations
 
                     b.HasIndex("RoleId");
 
-                    b.ToTable("AspNetUserRoles", (string)null);
+                    b.ToTable("UserRoles", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
@@ -373,20 +378,23 @@ namespace CBT.Data.Migrations
 
                     b.HasKey("UserId", "LoginProvider", "Name");
 
-                    b.ToTable("AspNetUserTokens", (string)null);
+                    b.ToTable("UserTokens", (string)null);
+                });
+
+            modelBuilder.Entity("CBT.Models.Doctor", b =>
+                {
+                    b.HasOne("CBT.Models.ApplicationUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("CBT.Models.Eximination", b =>
                 {
                     b.HasOne("CBT.Models.Patient", "Patient")
-                        .WithMany()
+                        .WithMany("eximinations")
                         .HasForeignKey("PatientId");
-
-                    b.HasOne("CBT.Models.Patient", null)
-                        .WithMany()
-                        .HasForeignKey("patient_Id")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
 
                     b.Navigation("Patient");
                 });
@@ -394,37 +402,31 @@ namespace CBT.Data.Migrations
             modelBuilder.Entity("CBT.Models.Patient", b =>
                 {
                     b.HasOne("CBT.Models.Doctor", "Doctor")
-                        .WithMany()
+                        .WithMany("patients")
                         .HasForeignKey("DoctorId");
 
-                    b.HasOne("CBT.Models.ApplicationUser", null)
+                    b.HasOne("CBT.Models.ApplicationUser", "User")
                         .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("CBT.Models.Doctor", null)
-                        .WithMany()
-                        .HasForeignKey("doctor_id")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("UserId");
 
                     b.Navigation("Doctor");
+
+                    b.Navigation("User");
                 });
 
-            modelBuilder.Entity("EximinationTreatment", b =>
+            modelBuilder.Entity("CBT.Models.Treatment", b =>
                 {
-                    b.HasOne("CBT.Models.Eximination", null)
-                        .WithMany()
-                        .HasForeignKey("EximinationsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.HasOne("CBT.Models.Patient", "Patient")
+                        .WithMany("treatments")
+                        .HasForeignKey("PatientId");
 
-                    b.HasOne("CBT.Models.Treatment", null)
+                    b.HasOne("CBT.Models.Eximination", "eximination")
                         .WithMany()
-                        .HasForeignKey("TreatmentsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("eximinationId");
+
+                    b.Navigation("Patient");
+
+                    b.Navigation("eximination");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -476,6 +478,18 @@ namespace CBT.Data.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("CBT.Models.Doctor", b =>
+                {
+                    b.Navigation("patients");
+                });
+
+            modelBuilder.Entity("CBT.Models.Patient", b =>
+                {
+                    b.Navigation("eximinations");
+
+                    b.Navigation("treatments");
                 });
 #pragma warning restore 612, 618
         }
