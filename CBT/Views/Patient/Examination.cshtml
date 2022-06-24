@@ -44,7 +44,7 @@
         <label asp-for="RBCS">Red Blood Cells (R.B.Cs):</</label>
         <input asp-for="RBCS" class="form-control" 
         placeholder="enter red blood cells"
-        style="border:2px solid black; width:330px;border-radius:10px;margin-left:17px;"/>
+        style="border:2px solid black; width:100px;border-radius:10px;margin-left:17px;"/>
         <span asp-validation-for="RBCS" class="text-danger"></span>
     </div>
 
@@ -52,7 +52,7 @@
         <label asp-for="WBES">white blood cells (w.b.cs):</</label>
         <input asp-for="WBES" class="form-control" 
         placeholder="enter white blood cells"
-        style="border:2px solid black; width:330px;border-radius:10px;"/>
+        style="border:2px solid black; width:300px;border-radius:10px; display:inline"/>
         <span asp-validation-for="WBES" class="text-danger"></span>
     </div>
      <br/>
@@ -68,7 +68,8 @@
         <input type="hidden" value="@UserManager.GetUserId(User)" name="IdUser"/>
     </div>
 
-    <input type="submit" class="btn btn-success" value="Save" />
+    <a asp-action="ResultExamination" asp-controller="Patient" class="btn btn-primary">Sava</a>
+    @*<input type="submit" class="btn btn-success" onclick="" value="Save" />*@
 </form>
       
 </div>
@@ -82,13 +83,18 @@
   </div>
     <hr />
 
+  <form asp-action="ExaminationByImage" asp-controller="Patient" asp-antiforgery="true" method="post">
   <div style="border:2px solid black;border-radius:10px;padding:10px;margin:10px;background-color:#DCDCDC">
-    <label>Please Upload a Picture:</label>
+    <label asp-for="ImgUrl">Please Upload a Picture:</</label>
     <input type="file" style="border:2px solid black; width:360px;border-radius:10px;margin-left:17px;background-color:white;"/>
-
+    <input asp-for="ImgUrl" value=window.URL.createObjectURL(this.files[0]) class="form-control"  />
+    <div>
+        <input type="hidden" value="@UserManager.GetUserId(User)" name="IdUser"/>
+    </div>
     <button  type="submit" id="prim" style="padding:10px; position:relative;border-radius:10px;" class="btn-primary">Send values
      </button>
   </div>
+  </form>
 </div>
 
 
