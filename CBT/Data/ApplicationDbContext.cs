@@ -69,7 +69,7 @@ namespace CBT.Data
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Data Source=DESKTOP-08TND6D;Initial Catalog=CBT_DB;Integrated Security=True");
+            optionsBuilder.UseSqlServer("Data Source=DESKTOP-17LHCQ4;Initial Catalog=CBT_DB;Integrated Security=True; MultipleActiveResultSets=true");
         }
 
     }

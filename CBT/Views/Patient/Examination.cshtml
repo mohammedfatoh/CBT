@@ -69,15 +69,15 @@
         <span asp-validation-for="PLT" class="text-danger"></span>
     </div>
     <div style="min-width:600px">
-        <span asp-for="PLT">MCHC: </</span>
-        <input asp-for="PLT" class="form-control" 
+        <span>MCHC: </</span>
+        <input  class="form-control" 
         placeholder="enter platelets"
         style="display:inline;border:2px solid black; width:300px;border-radius:10px;margin-left:150px"/>
         <span asp-validation-for="PLT" class="text-danger"></span>
     </div>
     <div style="min-width:600px">
-        <span asp-for="PLT">MCH: </</span>
-        <input asp-for="PLT" class="form-control" 
+        <span >MCH: </</span>
+        <input  class="form-control" 
         placeholder="enter platelets"
         style="display:inline;border:2px solid black; width:300px;border-radius:10px;margin-left:160px"/>
         <span asp-validation-for="PLT" class="text-danger"></span>
@@ -87,7 +87,8 @@
         <input type="hidden" value="@UserManager.GetUserId(User)" name="IdUser"/>
     </div>
 
-    <a style="margin:20px 0px 0px 100px; width:300px" asp-action="ResultExamination" asp-controller="Patient" class="btn btn-primary">Sava</a>
+   <button   type="submit" class="btn btn-primary d-block mt-4">Sava</button>
+
     @*<input type="submit" class="btn btn-success" onclick="" value="Save" />*@
 </form>
       
