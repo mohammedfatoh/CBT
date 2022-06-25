@@ -38,46 +38,46 @@
      <img src="~/images/vires2.png" class="vires" />
 </div>
 *@
-<form asp-action="Examination" asp-controller="Patient" asp-antiforgery="true" method="post" style="width:50%; margin:45px;">
+<form asp-action="Examination" asp-controller="Patient" asp-antiforgery="true" method="post" style="width:50%; margin:10px 45px; 0px">
     <div asp-validation-summary="None" class="text-danger"></div>
-    <div style="min-width:600px">
+    <div style="min-width:600px; margin-bottom:10px">
         <span asp-for="RBCS">Red Blood Cells (R.B.Cs): </span>
         <input asp-for="RBCS" class="form-control" placeholder="enter red blood cells" 
         style="display:inline;border:2px solid black; width:300px;border-radius:10px;margin-left:30px;"/>
         <span asp-validation-for="RBCS" class="text-danger"></span>
     </div>
 
-     <div style="min-width:600px">
+     <div style="min-width:600px;margin-bottom:10px">
         <span asp-for="WBES">White Blood Cells (W.B.Cs): </span>
         <input asp-for="WBES" class="form-control" 
         placeholder="enter white blood cells"
         style="display:inline;border:2px solid black; width:300px;border-radius:10px;margin-left:10px;"/>
         <span asp-validation-for="WBES" class="text-danger"></span>
     </div>
-     <div style="min-width:600px">
+     <div style="min-width:600px; margin-bottom:10px">
         <span asp-for="PLT">Platelets (plt):</</span>
         <input asp-for="PLT" class="form-control" 
         placeholder="enter platelets"
         style="display:inline;border:2px solid black; width:300px;border-radius:10px;margin-left:105px"/>
         <span asp-validation-for="PLT" class="text-danger"></span>
     </div>
-     <div style="min-width:600px">
-        <span >Haemoglobin: </</span>
+     <div style="min-width:600px; margin-bottom:10px">
+        <span>Haemoglobin: </</span>
         <input class="form-control" 
         placeholder="enter platelets"
         style="display:inline;border:2px solid black; width:300px;border-radius:10px;margin-left:101px"/>
         <span asp-validation-for="PLT" class="text-danger"></span>
     </div>
-    <div style="min-width:600px">
-        <span asp-for="PLT">MCHC: </</span>
-        <input asp-for="PLT" class="form-control" 
+    <div style="min-width:600px; margin-bottom:10px">
+        <span>MCHC: </</span>
+        <input class="form-control" 
         placeholder="enter platelets"
         style="display:inline;border:2px solid black; width:300px;border-radius:10px;margin-left:150px"/>
         <span asp-validation-for="PLT" class="text-danger"></span>
     </div>
-    <div style="min-width:600px">
-        <span asp-for="PLT">MCH: </</span>
-        <input asp-for="PLT" class="form-control" 
+    <div style="min-width:600px; margin-bottom:10px">
+        <span>MCH: </</span>
+        <input class="form-control" 
         placeholder="enter platelets"
         style="display:inline;border:2px solid black; width:300px;border-radius:10px;margin-left:160px"/>
         <span asp-validation-for="PLT" class="text-danger"></span>
@@ -87,7 +87,7 @@
         <input type="hidden" value="@UserManager.GetUserId(User)" name="IdUser"/>
     </div>
 
-    <a style="margin:20px 0px 0px 100px; width:300px" asp-action="ResultExamination" asp-controller="Patient" class="btn btn-primary">Sava</a>
+    <a style="margin:0px 0px 0px 100px; width:300px" asp-action="ResultExamination" asp-controller="Patient" class="btn btn-primary">Sava</a>
     @*<input type="submit" class="btn btn-success" onclick="" value="Save" />*@
 </form>
       
@@ -102,18 +102,19 @@
   </div>
     <hr />
 
-  <form asp-action="ExaminationByImage" asp-controller="Patient" asp-antiforgery="true" method="post">
-  <div style="border:2px solid black;border-radius:10px;padding:10px;margin:10px;background-color:#DCDCDC">
-    <label asp-for="ImgUrl">Please Upload a Picture:</</label>
-    <input type="file" style="border:2px solid black; width:360px;border-radius:10px;margin-left:17px;background-color:white;"/>
-    <input asp-for="ImgUrl" value=window.URL.createObjectURL(this.files[0]) class="form-control"  />
-    <div>
+  <div style="border:2px solid black;border-radius:10px;padding:5px;margin:7px 20px 0px ;background-color:#DCDCDC">
+  <form asp-action="ExaminationByImage" asp-controller="Patient" asp-antiforgery="true" method="post" style="width:50%;margin:15px">
+    <div style="min-width:600px">
+    <span asp-for="ImgUrl">Upload The Image: </span>
+    <input type="file" style="display:inline;border:2px solid black; width:360px;border-radius:10px;margin-left:10px;background-color:white;"/>
+    </div> 
+    <input asp-for="ImgUrl" value=window.URL.createObjectURL(this.files[0]) class="form-control" style="width:505px"  />
+    <div style="margin-left:160px">
         <input type="hidden" value="@UserManager.GetUserId(User)" name="IdUser"/>
     </div>
-    <button  type="submit" id="prim" style="padding:10px; position:relative;border-radius:10px;" class="btn-primary">Send values
-     </button>
-  </div>
+    <button  type="submit" id="prim" style="width:300px;padding:10px;margin-left:100px; position:relative;border-radius:10px;" class="btn-primary">Send values</button>
   </form>
+  </div>
 </div>
 
 
