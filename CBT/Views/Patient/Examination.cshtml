@@ -38,37 +38,56 @@
      <img src="~/images/vires2.png" class="vires" />
 </div>
 *@
-<form asp-action="Examination" asp-controller="Patient" asp-antiforgery="true" method="post" style="width:50%">
+<form asp-action="Examination" asp-controller="Patient" asp-antiforgery="true" method="post" style="width:50%; margin:45px;">
     <div asp-validation-summary="None" class="text-danger"></div>
-    <div>
-        <label asp-for="RBCS">Red Blood Cells (R.B.Cs):</</label>
-        <input asp-for="RBCS" class="form-control" 
-        placeholder="enter red blood cells"
-        style="border:2px solid black; width:100px;border-radius:10px;margin-left:17px;"/>
+    <div style="min-width:600px">
+        <span asp-for="RBCS">Red Blood Cells (R.B.Cs): </span>
+        <input asp-for="RBCS" class="form-control" placeholder="enter red blood cells" 
+        style="display:inline;border:2px solid black; width:300px;border-radius:10px;margin-left:30px;"/>
         <span asp-validation-for="RBCS" class="text-danger"></span>
     </div>
 
-     <div>
-        <label asp-for="WBES">white blood cells (w.b.cs):</</label>
+     <div style="min-width:600px">
+        <span asp-for="WBES">White Blood Cells (W.B.Cs): </span>
         <input asp-for="WBES" class="form-control" 
         placeholder="enter white blood cells"
-        style="border:2px solid black; width:300px;border-radius:10px; display:inline"/>
+        style="display:inline;border:2px solid black; width:300px;border-radius:10px;margin-left:10px;"/>
         <span asp-validation-for="WBES" class="text-danger"></span>
     </div>
-     <br/>
-     <div>
-        <label asp-for="PLT">platelets (plt):</</label>
+     <div style="min-width:600px">
+        <span asp-for="PLT">Platelets (plt):</</span>
         <input asp-for="PLT" class="form-control" 
         placeholder="enter platelets"
-        style="border:2px solid black; width:330px;border-radius:10px;margin-left:85px;"/>
+        style="display:inline;border:2px solid black; width:300px;border-radius:10px;margin-left:105px"/>
+        <span asp-validation-for="PLT" class="text-danger"></span>
+    </div>
+     <div style="min-width:600px">
+        <span >Haemoglobin: </</span>
+        <input class="form-control" 
+        placeholder="enter platelets"
+        style="display:inline;border:2px solid black; width:300px;border-radius:10px;margin-left:101px"/>
+        <span asp-validation-for="PLT" class="text-danger"></span>
+    </div>
+    <div style="min-width:600px">
+        <span asp-for="PLT">MCHC: </</span>
+        <input asp-for="PLT" class="form-control" 
+        placeholder="enter platelets"
+        style="display:inline;border:2px solid black; width:300px;border-radius:10px;margin-left:150px"/>
+        <span asp-validation-for="PLT" class="text-danger"></span>
+    </div>
+    <div style="min-width:600px">
+        <span asp-for="PLT">MCH: </</span>
+        <input asp-for="PLT" class="form-control" 
+        placeholder="enter platelets"
+        style="display:inline;border:2px solid black; width:300px;border-radius:10px;margin-left:160px"/>
         <span asp-validation-for="PLT" class="text-danger"></span>
     </div>
 
-    <div>
+    <div style="margin-left:160px">
         <input type="hidden" value="@UserManager.GetUserId(User)" name="IdUser"/>
     </div>
 
-    <a asp-action="ResultExamination" asp-controller="Patient" class="btn btn-primary">Sava</a>
+    <a style="margin:20px 0px 0px 100px; width:300px" asp-action="ResultExamination" asp-controller="Patient" class="btn btn-primary">Sava</a>
     @*<input type="submit" class="btn btn-success" onclick="" value="Save" />*@
 </form>
       
