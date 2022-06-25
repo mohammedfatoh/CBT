@@ -48,7 +48,7 @@ namespace CBT.Controllers
                 }
                await _context.Eximinations.AddAsync(exmination);
                await _context.SaveChangesAsync();
-                return RedirectToAction("ResultExamination",new {exmination = exmination});
+                return ResultExamination(exmination);
             }
             catch (Exception ex)
             {
