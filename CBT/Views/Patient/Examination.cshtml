@@ -43,51 +43,51 @@
     <div style="min-width:600px; margin-bottom:10px">
         <span asp-for="RBCS">Red Blood Cells (R.B.Cs): </span>
         <input asp-for="RBCS" class="form-control" placeholder="enter red blood cells" 
-        style="display:inline;border:2px solid black; width:300px;border-radius:10px;margin-left:30px;"/>
-        <span asp-validation-for="RBCS" class="text-danger"></span>
+        style="display:inline;border:2px solid black; width:300px;border-radius:10px;margin-left:30px;" required/>
+        <span asp-validation-for="RBCS" class="text-danger" style="margin:100px 60px 100px 210px;"></span>
     </div>
 
      <div style="min-width:600px;margin-bottom:10px">
         <span asp-for="WBES">White Blood Cells (W.B.Cs): </span>
         <input asp-for="WBES" class="form-control" 
         placeholder="enter white blood cells"
-        style="display:inline;border:2px solid black; width:300px;border-radius:10px;margin-left:10px;"/>
-        <span asp-validation-for="WBES" class="text-danger"></span>
+        style="display:inline;border:2px solid black; width:300px;border-radius:10px;margin-left:10px;" />
+        <span asp-validation-for="WBES" class="text-danger" style="margin:160px 60px 100px 210px;"></span>
     </div>
      <div style="min-width:600px; margin-bottom:10px">
         <span asp-for="PLT">Platelets (plt):</</span>
         <input asp-for="PLT" class="form-control" 
         placeholder="enter platelets"
-        style="display:inline;border:2px solid black; width:300px;border-radius:10px;margin-left:105px"/>
-        <span asp-validation-for="PLT" class="text-danger"></span>
+        style="display:inline;border:2px solid black; width:300px;border-radius:10px;margin-left:105px" />
+        <span asp-validation-for="PLT" class="text-danger" style="margin:220px 60px 100px 210px;"></span>
     </div>
      <div style="min-width:600px; margin-bottom:10px">
-        <span>Haemoglobin: </</span>
+        <span>Haemoglobin:</span>
         <input class="form-control" 
         placeholder="enter platelets"
-        style="display:inline;border:2px solid black; width:300px;border-radius:10px;margin-left:101px"/>
-        <span asp-validation-for="PLT" class="text-danger"></span>
+        style="display:inline;border:2px solid black; width:300px;border-radius:10px;margin-left:101px" />
+        <span asp-validation-for="PLT" class="text-danger" style="margin:280px 60px 100px 210px;"></span>
     </div>
-    <div style="min-width:600px">
-        <span asp-for="PLT">MCHC: </</span>
-        <input asp-for="PLT" class="form-control" 
+    <div style="min-width:600px; margin-bottom:10px">
+        <span >MCHC: </span>
+        <input class="form-control" 
         placeholder="enter platelets"
         style="display:inline;border:2px solid black; width:300px;border-radius:10px;margin-left:150px"/>
-        <span asp-validation-for="PLT" class="text-danger"></span>
+        <span asp-validation-for="PLT" class="text-danger" style="margin:340px 60px 100px 210px;"></span>
     </div>
-    <div style="min-width:600px">
-        <span asp-for="PLT">MCH: </</span>
-        <input asp-for="PLT" class="form-control" 
+    <div style="min-width:600px;margin-bottom:10px">
+        <span>MCH:</span>
+        <input class="form-control" 
         placeholder="enter platelets"
         style="display:inline;border:2px solid black; width:300px;border-radius:10px;margin-left:160px"/>
-        <span asp-validation-for="PLT" class="text-danger"></span>
+        <span asp-validation-for="PLT" class="text-danger" style="margin:400px 60px 100px 210px;"></span>
     </div>
 
     <div style="margin-left:160px">
         <input type="hidden" value="@UserManager.GetUserId(User)" name="IdUser"/>
     </div>
 
-            <button   type="submit" class="btn btn-primary d-block mt-4">Sava</button>
+            <button style="width:300px;padding:10px;margin-left:100px;"  type="submit" class="btn btn-primary d-block mt-4">Sava</button>
 
     @*<input type="submit" class="btn btn-success" onclick="" value="Save" />*@
 </form>
