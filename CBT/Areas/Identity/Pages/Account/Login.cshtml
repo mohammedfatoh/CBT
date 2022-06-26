@@ -13,19 +13,19 @@
         <section>
             <form id="account" method="post">
                 
-                <div asp-validation-summary="All" class="text-danger"></div>
-                <div class="form-floating">
+                <div asp-validation-summary="All" class="text-danger" style="margin:17px"></div>
+                <div class="form-floating" style="margin:15px 0px">
                     <input asp-for="Input.Email" id="style" class="" placeholder="E-mail" autocomplete="username" aria-required="true" />
                     <!--<label asp-for="Input.Email" class="form-label"></label>-->
-                    <span asp-validation-for="Input.Email" class="text-danger"></span>
+                    <span asp-validation-for="Input.Email" class="text-danger" ></span>
                 </div>
-                <div class="form-floating">
+                <div class="form-floating" style="margin:15px 0px">
                     <input asp-for="Input.Password" id="style" placeholder="Password" autocomplete="current-password" aria-required="true" />
                      <!--<label asp-for="Input.Password" class="form-label"></label>-->
-                    <span asp-validation-for="Input.Password" class="text-danger"></span>
+                    <span asp-validation-for="Input.Password" class="text-danger" style="margin:0px 0px 0px 40px"></span>
                 </div>
                 <div>
-                    <div class="checkbox" >
+                    <div class="checkbox" style="margin:15px 0px 0px 0px">
                         <label asp-for="Input.RememberMe" class="form-label"  style="color:white">
                             <input class="form-check-input" asp-for="Input.RememberMe"  style="margin-right:5px"/>
                             @Html.DisplayNameFor(m => m.Input.RememberMe)
@@ -38,11 +38,11 @@
                     </button>
                 </div>
                 <div>
-                    <p >
+                    <p style="display:inline">
                         <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Register as a new user</a>
                     </p>
 
-                    <p>
+                    <p style="display:inline; margin-left:20px">
                         <a id="forgot-password" asp-page="./ForgotPassword">Forgot your password?</a>
                     </p>
                     
@@ -59,16 +59,16 @@
             @{
                 if ((Model.ExternalLogins?.Count ?? 0) == 0)
                 {
-                    <form id="external-account" asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="form-horizontal">
-                        <div>
-                            <p>
-                                @foreach (var provider in Model.ExternalLogins)
+                        <form id="external-account" asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="form-horizontal">
+                            <div>
+                                <p>
+                                    @foreach (var provider in Model.ExternalLogins)
                                 {
-                                    <button type="submit" class="btn btn-primary" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">@provider.DisplayName</button>
+                                        <button type="submit" class="btn btn-primary" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">@provider.DisplayName</button>
                                 }
-                            </p>
-                        </div>
-                    </form>
+                                </p>
+                            </div>
+                        </form>
                 }
                 
             }
