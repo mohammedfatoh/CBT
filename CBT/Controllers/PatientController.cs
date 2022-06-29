@@ -46,6 +46,20 @@ namespace CBT.Controllers
                 {
                     exmination.patient_Id = patient.Id; 
                 }
+                //check if patinnt hava cancer or no 
+
+                if(exmination.RBCS < 1.5 && exmination.WBES < 1.5 && exmination.PLT <1.5)
+                {
+                    exmination.Result = "Cancer";
+                }
+
+                else
+                {
+                    exmination.Result = "healthy";
+                }
+
+
+
                await _context.Eximinations.AddAsync(exmination);
                await _context.SaveChangesAsync();
                 return RedirectToAction("ResultExamination", exmination);

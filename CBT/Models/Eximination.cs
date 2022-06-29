@@ -27,7 +27,7 @@ namespace CBT.Models
         [Required]
         public float MCH { get; set; }
 
-        public float   Result     { get; set; }
+        public string   Result     { get; set; }
 
         [Required]
         public DateTime Createddate { get; set; }
