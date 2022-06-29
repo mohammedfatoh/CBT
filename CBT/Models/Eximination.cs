@@ -18,7 +18,15 @@ namespace CBT.Models
         [Required]
         public float    WBES    { get; set; }
 
-       
+        [Required]
+        public float hemoglobin { get; set; }
+
+        [Required]
+        public float MCHC { get; set; }
+
+        [Required]
+        public float MCH { get; set; }
+
         public float   Result     { get; set; }
 
         [Required]
