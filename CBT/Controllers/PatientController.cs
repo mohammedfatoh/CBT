@@ -137,6 +137,18 @@ namespace CBT.Controllers
                     exmination.RBCS= (float)Convert.ToDouble(redBloodCell); 
                     exmination.WBES= (float)Convert.ToDouble(whitebloodCell);
                     exmination.PLT = (float)Convert.ToDouble(platelets);
+                    //check if patinnt hava cancer or no 
+
+                    if (exmination.RBCS < 1.5 && exmination.WBES < 1.5 &&
+                        exmination.PLT < 1.5)
+                    {
+                        exmination.Result = "Cancer";
+                    }
+                    else
+                    {
+                        exmination.Result = "healthy";
+                    }
+
                     await _context.Eximinations.AddAsync(exmination);
                     await _context.SaveChangesAsync();
                     return RedirectToAction("Index");
