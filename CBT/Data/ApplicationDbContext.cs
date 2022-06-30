@@ -62,14 +62,14 @@ namespace CBT.Data
 
         }
 
-        public  DbSet<Patient>Patients { get; set; }
-        public  DbSet<Doctor> Doctors { get; set; }
-        public  DbSet<Eximination> Eximinations { get; set; }
-        public  DbSet<Treatment> Treatments { get; set; }
-
+        public virtual  DbSet<Patient>Patients { get; set; }
+        public virtual DbSet<Doctor> Doctors { get; set; }
+        public virtual DbSet<Eximination> Eximinations { get; set; }
+        public virtual DbSet<Treatment> Treatments { get; set; }
+        public virtual DbSet<Laboratory> Laboratories { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Data Source=DESKTOP-17LHCQ4;Initial Catalog=CBT_DB;Integrated Security=True; MultipleActiveResultSets=true;MultipleActiveResultSets=true");
+            optionsBuilder.UseSqlServer("Data Source=AHMEDMOSTAFA;Initial Catalog=CBT_DB;Integrated Security=True; MultipleActiveResultSets=true;MultipleActiveResultSets=true");
         }
 
     }

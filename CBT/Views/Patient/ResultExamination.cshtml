@@ -1,1 +1,10 @@
-﻿<h1>hello</h1>
+﻿@model Eximination
+
+@if(Model.Result.ToLower().Equals("cancer"))
+{
+    <h1>Tratement@(Model.MCH)</h1>
+}
+else
+{
+    <h1>Advices</h1>
+}

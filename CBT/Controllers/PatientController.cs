@@ -165,7 +165,7 @@ namespace CBT.Controllers
 
         public IActionResult ResultExamination(Eximination eximination)
         {
-            return View();
+            return View(eximination);
         }
 
 
