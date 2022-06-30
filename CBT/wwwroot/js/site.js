@@ -7,7 +7,7 @@ $(document).ready(function () {
         top: "50px"
     }, 500, function () {
         $(this).animate({
-            height: "400px"
+            Height: "400px"
         }, 1000, function () {
             $(".log").slideDown(500)
         });
@@ -15,5 +15,13 @@ $(document).ready(function () {
 
     $("#asd").click(function () {
        $(".asd2").remove();
-   });
+    });
+    $(".center2").animate({
+        top: "50px"
+    }, 500, function () {
+        $(this).animate({
+        }, 1000, function () {
+            $(".log").slideDown(500)
+        });
+    });
 });

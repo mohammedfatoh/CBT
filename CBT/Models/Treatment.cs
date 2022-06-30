@@ -20,5 +20,7 @@ namespace CBT.Models
         public int Exmination_id { get; set; }
 
         public virtual Eximination eximination { get; set; }
+
+        
     }
 }
