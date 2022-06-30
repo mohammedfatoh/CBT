@@ -11,16 +11,6 @@ namespace CBT.Models
 
         public float Amount { get; set; }
 
-        [ForeignKey("patient_Id")]
-        public int patient_Id { get; set; }
-
-        public virtual Patient Patient { get; set; }
-
-        [ForeignKey("Exmination_id")]
-        public int Exmination_id { get; set; }
-
-        public virtual Eximination eximination { get; set; }
-
-        
+        public int orderOfCancer { get; set; }
     }
 }

@@ -10,16 +10,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
+using Microsoft.AspNetCore.Identity;
 
 namespace CBT.Controllers
 {
     public class PatientController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly UserManager<ApplicationUser> _userManager;
 
-        public PatientController(ApplicationDbContext context)
+        public PatientController(ApplicationDbContext context,
+            UserManager<ApplicationUser> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
 
         public  IActionResult Index()
@@ -166,13 +170,24 @@ namespace CBT.Controllers
 
         public IActionResult ResultExamination(Eximination eximination)
         {
+            List<Treatment> treatments = _context.Treatments.ToList();
+            ViewBag.Treatments = treatments;
             return View(eximination);
         }
 
 
-        public IActionResult PreviosExamination()
+        public async Task<IActionResult> PreviosExamination()
         {
-            return View();
+            ApplicationUser user = await _userManager.GetUserAsync(HttpContext.User);
+            string userId = user.Id;
+            
+            Patient patient = _context.Patients.FirstOrDefault(x => x.UserId == userId);
+
+            List<Eximination> eximinations = _context.Eximinations.Where(eximination => 
+            eximination.patient_Id == patient.Id).ToList();
+                
+
+            return View(eximinations);
         }
       
     }

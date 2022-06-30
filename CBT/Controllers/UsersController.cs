@@ -23,6 +23,7 @@ namespace CBT.Controllers
         }
         public async Task<IActionResult> Index()
         {
+            
             var users = await _userManager.Users.Select(user => new UserViewModel
             {
                 Id = user.Id,
