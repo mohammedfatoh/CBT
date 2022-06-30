@@ -98,7 +98,8 @@ namespace CBT.Controllers
                 using (var api = OcrApi.Create())
                 {
                     api.Init(Languages.English);
-                    string plainText = api.GetTextFromImage("C:\\Users\\Microsoft\\OneDrive\\Desktop\\fff.jpg");
+                    string imgurl = ".\\wwwroot\\images\\1.png";
+                    string plainText = api.GetTextFromImage(imgurl);
                     Console.WriteLine(plainText);
                     string rBC = "", redBloodCell = "", whitebloodCell = "", platelets = "";
                     for (int ind = 0; ind < plainText.Length; ind++)
