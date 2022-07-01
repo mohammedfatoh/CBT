@@ -38,4 +38,8 @@
     <PackageReference Include="Tesseract.Net.SDK" Version="4.5.411" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\ExminationImages\" />
+  </ItemGroup>
+
 </Project>

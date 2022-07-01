@@ -29,6 +29,9 @@ namespace CBT.Models
 
         public string   Result     { get; set; }
 
+        [NotMapped]
+        public IFormFile File { get; set; }
+
         [Required]
         public DateTime Createddate { get; set; }
 

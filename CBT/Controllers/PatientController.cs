@@ -11,6 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Hosting;
 
 namespace CBT.Controllers
 {
@@ -18,12 +19,13 @@ namespace CBT.Controllers
     {
         private readonly ApplicationDbContext _context;
         private readonly UserManager<ApplicationUser> _userManager;
-
+        private readonly IWebHostEnvironment hosting;
         public PatientController(ApplicationDbContext context,
-            UserManager<ApplicationUser> userManager)
+            UserManager<ApplicationUser> userManager, IWebHostEnvironment hosting)
         {
             _context = context;
             _userManager = userManager;
+            this.hosting = hosting;
         }
 
         public  IActionResult Index()
@@ -98,7 +100,16 @@ namespace CBT.Controllers
                     exmination.patient_Id = patient.Id;
                 }
 
-                List<string> word = new List<string>();
+                //part upload image
+                if (exmination.File != null)
+                {
+                    string uploads = Path.Combine(hosting.WebRootPath, "ExminationImages");
+                }
+
+
+
+
+                    List<string> word = new List<string>();
                 using (var api = OcrApi.Create())
                 {
                     api.Init(Languages.English);
