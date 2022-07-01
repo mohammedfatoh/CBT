@@ -101,73 +101,87 @@ namespace CBT.Controllers
                 }
 
                 //part upload image
+                string fileName = string.Empty;
                 if (exmination.File != null)
                 {
                     string uploads = Path.Combine(hosting.WebRootPath, "ExminationImages");
-                }
+                    fileName = exmination.File.FileName;
+                    string fullPath = Path.Combine(uploads, fileName);
+                    exmination.File.CopyTo(new FileStream(fullPath, FileMode.Create));
+                    exmination.ImgUrl = fullPath;
 
-
-
+                    //code analyze image
 
                     List<string> word = new List<string>();
-                using (var api = OcrApi.Create())
-                {
-                    api.Init(Languages.English);
-                    string imgurl = ".\\wwwroot\\images\\1.png";
-                    string plainText = api.GetTextFromImage(imgurl);
-                    Console.WriteLine(plainText);
-                    string rBC = "", redBloodCell = "", whitebloodCell = "", platelets = "";
-                    for (int ind = 0; ind < plainText.Length; ind++)
+                    using (var api = OcrApi.Create())
                     {
-                        if (char.IsLetter(plainText[ind]) || char.IsDigit(plainText[ind]))
+                        api.Init(Languages.English);
+                        string imgurl = fullPath;
+                        string plainText = api.GetTextFromImage(imgurl);
+                        Console.WriteLine(plainText);
+                        string rBC = "", redBloodCell = "", whitebloodCell = "", platelets = "";
+                        for (int ind = 0; ind < plainText.Length; ind++)
                         {
-                            rBC += char.ToLower(plainText[ind]);
+                            if (char.IsLetter(plainText[ind]) || char.IsDigit(plainText[ind]))
+                            {
+                                rBC += char.ToLower(plainText[ind]);
 
-                        }
-                        else if (plainText[ind] == '.') { }
-                        else if (rBC.Length > 0)
-                        {
-                            word.Add(rBC);
-                            rBC = "";
+                            }
+                            else if (plainText[ind] == '.') { }
+                            else if (rBC.Length > 0)
+                            {
+                                word.Add(rBC);
+                                rBC = "";
 
+                            }
                         }
-                    }
-                    for (int ind = 0; ind < word.Count; ind++)
-                    {
-                        if (ind + 2 < word.Count && (word[ind] == "red" || word[ind] == "r.b.cs" || word[ind] == "rbcs"))
+                        for (int ind = 0; ind < word.Count; ind++)
                         {
-                            ind += 3;
-                            redBloodCell = word[ind];
+                            if (ind + 2 < word.Count && (word[ind] == "red" || word[ind] == "r.b.cs" || word[ind] == "rbcs"))
+                            {
+                                ind += 3;
+                                redBloodCell = word[ind];
+                            }
+                            if (word[ind] == "rdw")
+                            {
+                                whitebloodCell = word[ind + 1];
+                            }
+                            if (ind + 1 < word.Count && word[ind] == "platelet"
+                                 && word[ind + 1] == "count")
+                            {
+                                ind += 2;
+                                platelets = word[ind];
+                            }
                         }
-                        if (word[ind] == "rdw")
-                        {
-                            whitebloodCell = word[ind + 1];
-                        }
-                        if (ind + 1 < word.Count && word[ind] == "platelet"
-                             && word[ind + 1] == "count")
-                        {
-                            ind += 2;
-                            platelets = word[ind];
-                        }
-                    }
-                    exmination.RBCS= (float)Convert.ToDouble(redBloodCell); 
-                    exmination.WBES= (float)Convert.ToDouble(whitebloodCell);
-                    exmination.PLT = (float)Convert.ToDouble(platelets);
-                    //check if patinnt hava cancer or no 
+                        exmination.RBCS = (float)Convert.ToDouble(redBloodCell);
+                        exmination.WBES = (float)Convert.ToDouble(whitebloodCell);
+                        exmination.PLT = (float)Convert.ToDouble(platelets);
+                        //check if patinnt hava cancer or no 
 
-                    if (exmination.RBCS < 1.5 && exmination.WBES < 1.5 &&
-                        exmination.PLT < 1.5)
-                    {
-                        exmination.Result = "Cancer";
-                    }
-                    else
-                    {
-                        exmination.Result = "healthy";
-                    }
+                        if (exmination.RBCS < 1 && exmination.WBES < 1 &&
+                            exmination.PLT < 1)
+                        {
+                            exmination.Result = "firstCancer";
+                        }
+                        else if((exmination.RBCS >= 1 && exmination.RBCS < 2 ) && (exmination.WBES >= 1 && exmination.WBES < 2) &&
+                            (exmination.PLT >= 1 && exmination.PLT < 2))
+                        {
+                            exmination.Result = "SecondCancer";
+                        }
+                        else if ((exmination.RBCS >= 2 && exmination.RBCS < 3) && (exmination.WBES >= 2 && exmination.WBES < 3) &&
+                            (exmination.PLT >= 2 && exmination.PLT < 3))
+                        {
+                            exmination.Result = "ThirdCancer";
+                        }
+                        else
+                        {
+                            exmination.Result = "healthy";
+                        }
 
-                    await _context.Eximinations.AddAsync(exmination);
-                    await _context.SaveChangesAsync();
-                    return RedirectToAction("Index");
+                        await _context.Eximinations.AddAsync(exmination);
+                        await _context.SaveChangesAsync();
+                        return RedirectToAction("Index");
+                    }
                 }
             }
             catch (Exception ex)
