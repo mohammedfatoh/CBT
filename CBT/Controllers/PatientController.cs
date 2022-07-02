@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 using System.Drawing;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Hosting;
+using IronOcr;
 
 namespace CBT.Controllers
 {
@@ -109,15 +110,20 @@ namespace CBT.Controllers
                     string fullPath = Path.Combine(uploads, fileName);
                     exmination.File.CopyTo(new FileStream(fullPath, FileMode.Create));
                     exmination.ImgUrl = fullPath;
+                    Console.WriteLine(fullPath);
 
                     //code analyze image
 
                     List<string> word = new List<string>();
-                    using (var api = OcrApi.Create())
+                    var Ocr = new IronTesseract();
+                    using (var Input = new OcrInput(fullPath))
                     {
-                        api.Init(Languages.English);
+                       // api.Init(Languages.English);
                         string imgurl = fullPath;
-                        string plainText = api.GetTextFromImage(imgurl);
+                        // string plainText = api.GetTextFromImage(imgurl);
+                         var plainText1 = Ocr.Read(Input);
+                        string plainText = plainText1.Text;
+
                         Console.WriteLine(plainText);
                         string rBC = "", redBloodCell = "", whitebloodCell = "", platelets = "";
                         for (int ind = 0; ind < plainText.Length; ind++)
