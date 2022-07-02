@@ -55,11 +55,21 @@ namespace CBT.Controllers
                 }
                 //check if patinnt hava cancer or no 
 
-                if(exmination.RBCS < 1.5 && exmination.WBES < 1.5 && exmination.PLT <1.5)
+                if (exmination.RBCS < 1 && exmination.WBES < 1 &&
+                            exmination.PLT < 1)
                 {
-                    exmination.Result = "Cancer";
+                    exmination.Result = "firstCancer";
                 }
-
+                else if ((exmination.RBCS >= 1 && exmination.RBCS < 2) && (exmination.WBES >= 1 && exmination.WBES < 2) &&
+                    (exmination.PLT >= 1 && exmination.PLT < 2))
+                {
+                    exmination.Result = "SecondCancer";
+                }
+                else if ((exmination.RBCS >= 2 && exmination.RBCS < 3) && (exmination.WBES >= 2 && exmination.WBES < 3) &&
+                    (exmination.PLT >= 2 && exmination.PLT < 3))
+                {
+                    exmination.Result = "ThirdCancer";
+                }
                 else
                 {
                     exmination.Result = "healthy";
@@ -67,7 +77,7 @@ namespace CBT.Controllers
 
 
 
-               await _context.Eximinations.AddAsync(exmination);
+                await _context.Eximinations.AddAsync(exmination);
                await _context.SaveChangesAsync();
                 return RedirectToAction("ResultExamination", exmination);
 
@@ -152,7 +162,7 @@ namespace CBT.Controllers
                                 redBloodCell = word[ind];
                                 f = false;
                             }
-                            if (f1 &&( word[ind] == "rdw" || word[ind] == "rdws"))
+                            if (f1 &&( word[ind] == "rdw" || word[ind] == "rdws" ||word[ind] == "row"))
                             {
                                 f1 = false;
                                 whitebloodCell = word[ind + 1];
@@ -162,6 +172,8 @@ namespace CBT.Controllers
                             {
                                 f2 = false;
                                 ind += 1;
+                                if (word[ind] == "count")
+                                    ind++;
                                 platelets = word[ind];
                             }
                         }
@@ -197,7 +209,7 @@ namespace CBT.Controllers
 
                         await _context.Eximinations.AddAsync(exmination);
                         await _context.SaveChangesAsync();
-                        return RedirectToAction("Index");
+                        return RedirectToAction("ResultExamination", exmination);
                     }
                 }
             }
