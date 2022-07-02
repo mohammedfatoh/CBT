@@ -120,8 +120,9 @@ namespace CBT.Controllers
                     {
                        // api.Init(Languages.English);
                         string imgurl = fullPath;
+                        Input.Deskew();
                         // string plainText = api.GetTextFromImage(imgurl);
-                         var plainText1 = Ocr.Read(Input);
+                        var plainText1 = Ocr.Read(Input);
                         string plainText = plainText1.Text;
 
                         Console.WriteLine(plainText);
@@ -133,7 +134,7 @@ namespace CBT.Controllers
                                 rBC += char.ToLower(plainText[ind]);
 
                             }
-                            else if (plainText[ind] == '.') { }
+                            else if (plainText[ind] == '.') { rBC += plainText[ind]; }
                             else if (rBC.Length > 0)
                             {
                                 word.Add(rBC);
@@ -141,24 +142,34 @@ namespace CBT.Controllers
 
                             }
                         }
+                        bool f = true, f1 = true, f2 = true;
                         for (int ind = 0; ind < word.Count; ind++)
                         {
-                            if (ind + 2 < word.Count && (word[ind] == "red" || word[ind] == "r.b.cs" || word[ind] == "rbcs"))
+                            if (f && ind + 2 < word.Count && (word[ind] == "red" || word[ind] == "r.b.cs" || word[ind] == "rbcs" || word[ind] == "rbc"))
                             {
-                                ind += 3;
+                                if (word[ind] == "r.b.cs" || word[ind] == "rbcs" || word[ind] == "rbc") ind++;
+                                else ind += 3;
                                 redBloodCell = word[ind];
+                                f = false;
                             }
-                            if (word[ind] == "rdw")
+                            if (f1 &&( word[ind] == "rdw" || word[ind] == "rdws"))
                             {
+                                f1 = false;
                                 whitebloodCell = word[ind + 1];
                             }
-                            if (ind + 1 < word.Count && word[ind] == "platelet"
-                                 && word[ind + 1] == "count")
+                            if (f2 && ind + 1 < word.Count && (word[ind] == "platelets" || word[ind] == "platelet" 
+                                || word[ind] == "plt"))
                             {
-                                ind += 2;
+                                f2 = false;
+                                ind += 1;
                                 platelets = word[ind];
                             }
                         }
+
+                        Console.WriteLine(redBloodCell);
+                        Console.WriteLine(whitebloodCell);
+                        Console.WriteLine(platelets);
+
                         exmination.RBCS = (float)Convert.ToDouble(redBloodCell);
                         exmination.WBES = (float)Convert.ToDouble(whitebloodCell);
                         exmination.PLT = (float)Convert.ToDouble(platelets);
