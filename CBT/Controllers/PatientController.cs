@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 using System.Drawing;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Hosting;
+using IronOcr;
 
 namespace CBT.Controllers
 {
@@ -54,11 +55,21 @@ namespace CBT.Controllers
                 }
                 //check if patinnt hava cancer or no 
 
-                if(exmination.RBCS < 1.5 && exmination.WBES < 1.5 && exmination.PLT <1.5)
+                if (exmination.RBCS < 1 && exmination.WBES < 1 &&
+                            exmination.PLT < 1)
                 {
-                    exmination.Result = "Cancer";
+                    exmination.Result = "firstCancer";
                 }
-
+                else if ((exmination.RBCS >= 1 && exmination.RBCS < 2) && (exmination.WBES >= 1 && exmination.WBES < 2) &&
+                    (exmination.PLT >= 1 && exmination.PLT < 2))
+                {
+                    exmination.Result = "SecondCancer";
+                }
+                else if ((exmination.RBCS >= 2 && exmination.RBCS < 3) && (exmination.WBES >= 2 && exmination.WBES < 3) &&
+                    (exmination.PLT >= 2 && exmination.PLT < 3))
+                {
+                    exmination.Result = "ThirdCancer";
+                }
                 else
                 {
                     exmination.Result = "healthy";
@@ -66,7 +77,7 @@ namespace CBT.Controllers
 
 
 
-               await _context.Eximinations.AddAsync(exmination);
+                await _context.Eximinations.AddAsync(exmination);
                await _context.SaveChangesAsync();
                 return RedirectToAction("ResultExamination", exmination);
 
@@ -109,15 +120,21 @@ namespace CBT.Controllers
                     string fullPath = Path.Combine(uploads, fileName);
                     exmination.File.CopyTo(new FileStream(fullPath, FileMode.Create));
                     exmination.ImgUrl = fullPath;
+                    Console.WriteLine(fullPath);
 
                     //code analyze image
 
                     List<string> word = new List<string>();
-                    using (var api = OcrApi.Create())
+                    var Ocr = new IronTesseract();
+                    using (var Input = new OcrInput(fullPath))
                     {
-                        api.Init(Languages.English);
+                       // api.Init(Languages.English);
                         string imgurl = fullPath;
-                        string plainText = api.GetTextFromImage(imgurl);
+                        Input.Deskew();
+                        // string plainText = api.GetTextFromImage(imgurl);
+                        var plainText1 = Ocr.Read(Input);
+                        string plainText = plainText1.Text;
+
                         Console.WriteLine(plainText);
                         string rBC = "", redBloodCell = "", whitebloodCell = "", platelets = "";
                         for (int ind = 0; ind < plainText.Length; ind++)
@@ -127,7 +144,7 @@ namespace CBT.Controllers
                                 rBC += char.ToLower(plainText[ind]);
 
                             }
-                            else if (plainText[ind] == '.') { }
+                            else if (plainText[ind] == '.') { rBC += plainText[ind]; }
                             else if (rBC.Length > 0)
                             {
                                 word.Add(rBC);
@@ -135,24 +152,36 @@ namespace CBT.Controllers
 
                             }
                         }
+                        bool f = true, f1 = true, f2 = true;
                         for (int ind = 0; ind < word.Count; ind++)
                         {
-                            if (ind + 2 < word.Count && (word[ind] == "red" || word[ind] == "r.b.cs" || word[ind] == "rbcs"))
+                            if (f && ind + 2 < word.Count && (word[ind] == "red" || word[ind] == "r.b.cs" || word[ind] == "rbcs" || word[ind] == "rbc"))
                             {
-                                ind += 3;
+                                if (word[ind] == "r.b.cs" || word[ind] == "rbcs" || word[ind] == "rbc") ind++;
+                                else ind += 3;
                                 redBloodCell = word[ind];
+                                f = false;
                             }
-                            if (word[ind] == "rdw")
+                            if (f1 &&( word[ind] == "rdw" || word[ind] == "rdws" ||word[ind] == "row"))
                             {
+                                f1 = false;
                                 whitebloodCell = word[ind + 1];
                             }
-                            if (ind + 1 < word.Count && word[ind] == "platelet"
-                                 && word[ind + 1] == "count")
+                            if (f2 && ind + 1 < word.Count && (word[ind] == "platelets" || word[ind] == "platelet" 
+                                || word[ind] == "plt"))
                             {
-                                ind += 2;
+                                f2 = false;
+                                ind += 1;
+                                if (word[ind] == "count")
+                                    ind++;
                                 platelets = word[ind];
                             }
                         }
+
+                        Console.WriteLine(redBloodCell);
+                        Console.WriteLine(whitebloodCell);
+                        Console.WriteLine(platelets);
+
                         exmination.RBCS = (float)Convert.ToDouble(redBloodCell);
                         exmination.WBES = (float)Convert.ToDouble(whitebloodCell);
                         exmination.PLT = (float)Convert.ToDouble(platelets);
@@ -180,7 +209,7 @@ namespace CBT.Controllers
 
                         await _context.Eximinations.AddAsync(exmination);
                         await _context.SaveChangesAsync();
-                        return RedirectToAction("Index");
+                        return RedirectToAction("ResultExamination", exmination);
                     }
                 }
             }

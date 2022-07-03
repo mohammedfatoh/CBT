@@ -110,8 +110,8 @@
     @*<span asp-for="ImgUrl">Upload The Image: </span>
     <input type="file" style="display:inline;border:2px solid black; width:360px;border-radius:10px;margin-left:10px;background-color:white;"/>*@
     <div class="form-group">
-                <label asp-for="File" class="control-label"></label>
-                <input type="file" name ="File" asp-for="File" class="form-control" />
+                <label asp-for="File" class="control-label">image Exmination</label>
+                <input type="file" name ="File"  style="display:inline;border:2px solid black; width:360px;border-radius:10px;margin-left:20px" asp-for="File" class="form-control" />
                 <span asp-validation-for="File" class="text-danger"></span>
             </div>
     </div> 
@@ -123,14 +123,10 @@
   </div>
 </div>
 
-<div class="form-group">
-                <label asp-for="File" class="control-label"></label>
-                <input type="file" name ="File" asp-for="File" class="form-control" />
-                <span asp-validation-for="File" class="text-danger"></span>
-            </div>
+
 
 <div class="container-fluid mt-3 container1">
-  <h3 >Hello Ahmed</h3>
+  <h3 >Hello @UserManager.GetUserName(User)</h3>
   <p>We are happy to have you with us, and we wish you a speedy recovery.</p>
   <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#demo">
     Enter the data 
