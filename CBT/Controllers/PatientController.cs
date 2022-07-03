@@ -51,7 +51,8 @@ namespace CBT.Controllers
                 Patient patient=_context.Patients.FirstOrDefault(x => x.UserId == userId);
                 if(patient!=null)
                 {
-                    exmination.patient_Id = patient.Id; 
+                    exmination.patient_Id = patient.Id;
+                    exmination.Patient = _context.Patients.FirstOrDefault(x => x.UserId == userId);
                 }
                 //check if patinnt hava cancer or no 
 
@@ -109,6 +110,7 @@ namespace CBT.Controllers
                 if (patient != null)
                 {
                     exmination.patient_Id = patient.Id;
+                    exmination.Patient= _context.Patients.FirstOrDefault(x => x.UserId == userId);
                 }
 
                 //part upload image
@@ -224,8 +226,26 @@ namespace CBT.Controllers
 
         public IActionResult ResultExamination(Eximination eximination)
         {
-            List<Treatment> treatments = _context.Treatments.ToList();
-            ViewBag.Treatments = treatments;
+            List<Treatment> treatments;
+            if (eximination.Result.ToLower().Equals("firstCancer"))
+            {
+                 treatments = _context.Treatments.Where
+                    (treatment => treatment.orderOfCancer ==1).ToList();
+                ViewBag.Treatments = treatments;
+            }
+            else if (eximination.Result.ToLower().Equals("SecondCancer"))
+            {
+                treatments = _context.Treatments.Where
+                    (treatment => treatment.orderOfCancer == 2).ToList();
+                ViewBag.Treatments = treatments;
+            }
+            else if (eximination.Result.ToLower().Equals("ThirdCancer"))
+            {
+                treatments = _context.Treatments.Where
+                    (treatment => treatment.orderOfCancer == 3).ToList();
+                ViewBag.Treatments = treatments;
+            }
+            
             return View(eximination);
         }
 
@@ -234,14 +254,23 @@ namespace CBT.Controllers
         {
             ApplicationUser user = await _userManager.GetUserAsync(HttpContext.User);
             string userId = user.Id;
-            
-            Patient patient = _context.Patients.FirstOrDefault(x => x.UserId == userId);
+            List<Eximination> eximinations;
+            if (( await _userManager.IsInRoleAsync(user,RolesNames.RoleAdmin)) || 
+                ( await _userManager.IsInRoleAsync(user, RolesNames.RoleDoctor)))
+            {
+                eximinations = _context.Eximinations.ToList();
+                return View(eximinations);
+            }
+            else
+            {
+                Patient patient = _context.Patients.FirstOrDefault(x => x.UserId == userId);
 
-            List<Eximination> eximinations = _context.Eximinations.Where(eximination => 
-            eximination.patient_Id == patient.Id).ToList();
-                
+                eximinations = _context.Eximinations.Where(eximination =>
+                eximination.patient_Id == patient.Id).ToList();
 
-            return View(eximinations);
+
+                return View(eximinations);
+            }
         }
       
     }

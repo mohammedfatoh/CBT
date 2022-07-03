@@ -1,10 +1,17 @@
 ﻿@model Eximination
 @if(Model.Result.ToLower().Equals("healthy"))
 {
+    @*<h1>@Model.Patient.Id</h1>*@
         <h1>Advices</h1>
 }
 else if (Model.Result.ToLower().Equals("firstCancer"))
 {
+    <select class="form form-control">
+    @foreach (var item in ViewBag.Treatments)
+    {
+        <option>@item.Name</option>
+    }
+    </select>
     
     <h1>Tratement@(Model.MCH)</h1>
 
@@ -34,10 +41,25 @@ else if (Model.Result.ToLower().Equals("firstCancer"))
 else if (Model.Result.ToLower().Equals("SecondCancer"))
 {
     
+    <select class="form form-control">
+    @foreach (var item in ViewBag.Treatments)
+    {
+        <option>@item.Name</option>
+    }
+    </select>
+
     <h1>Tratement@(Model.MCH)</h1>
 
 <div class="center2">
-   
+   <select class="form form-control">
+    @foreach (var item in ViewBag.Treatments)
+    {
+        <option>@item.Name</option>
+    }
+    </select>
+
+    <br/>
+
     <table class="table text-light">
       <thead>
         <tr>
