@@ -1,7 +1,39 @@
 ﻿@model Eximination
-//use foreach to show all data
-@if(Model.Result.ToLower().Equals("cancer"))
+@if(Model.Result.ToLower().Equals("healthy"))
 {
+        <h1>Advices</h1>
+}
+else if (Model.Result.ToLower().Equals("firstCancer"))
+{
+    
+    <h1>Tratement@(Model.MCH)</h1>
+
+<div class="center2">
+   
+    <table class="table text-light">
+      <thead>
+        <tr>
+          <th scope="col">TreatmentName</th>
+          <th scope="col">Quantity</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          @foreach (var item in ViewBag.Treatments){
+          <td>@item</td>
+          <td>@item</td>
+
+          }
+        </tr>
+      </tbody>
+    </table>
+       
+</div>
+
+}
+else if (Model.Result.ToLower().Equals("SecondCancer"))
+{
+    
     <h1>Tratement@(Model.MCH)</h1>
 
 <div class="center2">
@@ -26,9 +58,5 @@
 </div>
  
 
-}
-else
-{
-    <h1>Advices</h1>
 }
 
