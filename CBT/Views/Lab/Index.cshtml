@@ -20,13 +20,23 @@ th{
         @foreach (var item in Model)
     {
 
-   <div class="card"  style="width: 18rem;margin-bottom:30px;">
+   <div class="card"  style="width: 18rem;margin-bottom:30px;text-align:center">
    <img class="card-img-top" style="height:200px" src='~/images/@item.ImgUrl' alt="Card image cap" />
-   <div class="card-body">
+   <div class="card-body" style=" direction:rtl;">
     <i class="fa-brands fa-adn"></i>
-    <h5 class="card-title" style="display:inline-block">@item.Name</h5>
-    <p class="card-text">@item.Description</p>
-    <a href="#" class="btn btn-primary">@item.Phone</a>
+    <h5 class="card-title" style="display:inline-block;margin-right:10px">@item.Name</h5>
+    <hr>
+    <i class="fa-solid fa-location-dot" style=" margin-bottom:5px;font-size:25px"></i>
+    <br>
+    <p class="card-text" style="display:inline-block; margin-right:10px;">@item.Address</p>
+        <br>
+    <i class="fa-solid fa-phone-flip" style=" margin-bottom:5px;font-size:25px"></i>
+    <br>
+    <label  style="margin:5px">@item.Phone</label>
+    <br>
+    <i class="fa-solid fa-eye" style=" margin-bottom:5px;font-size:25px"></i>
+    <br>
+    <label><a href="@item.Description"> See More </a></label>
    </div> 
    </div>  
     }
