@@ -52,7 +52,10 @@ namespace CBT.Controllers
                 if(patient!=null)
                 {
                     exmination.patient_Id = patient.Id;
-                    exmination.Patient = _context.Patients.FirstOrDefault(x => x.UserId == userId);
+                    //exmination.Patient = _context.Patients.FirstOrDefault(x => x.UserId == userId);
+                    exmination.NamePatient = patient.Name;
+                    var user = await _userManager.FindByIdAsync(IdUser);
+                    exmination.EmailPatient = user.Email;
                 }
                 //check if patinnt hava cancer or no 
 
@@ -110,7 +113,11 @@ namespace CBT.Controllers
                 if (patient != null)
                 {
                     exmination.patient_Id = patient.Id;
-                    exmination.Patient= _context.Patients.FirstOrDefault(x => x.UserId == userId);
+                    //exmination.Patient=new Patient();
+                    //exmination.Patient= _context.Patients.FirstOrDefault(x => x.UserId == userId);
+                    exmination.NamePatient = patient.Name;
+                    var user = await _userManager.FindByIdAsync(IdUser);
+                    exmination.EmailPatient = user.Email;
                 }
 
                 //part upload image

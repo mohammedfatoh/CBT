@@ -29,6 +29,10 @@ namespace CBT.Models
 
         public string   Result     { get; set; }
 
+        public string NamePatient { get; set; }
+
+        public string EmailPatient { get; set; }
+
         [NotMapped]
         public IFormFile File { get; set; }
 

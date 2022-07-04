@@ -1,7 +1,8 @@
 ﻿@model Eximination
+
 @if(Model.Result.ToLower().Equals("healthy"))
 {
-    @*<h1>@Model.Patient.Id</h1>*@
+    
         <h1>Advices</h1>
 }
 else if (Model.Result.ToLower().Equals("firstCancer"))
