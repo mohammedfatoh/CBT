@@ -64,13 +64,15 @@ namespace CBT.Controllers
                 {
                     exmination.Result = "firstcancer";
                 }
-                else if ((exmination.RBCS >= 1 && exmination.RBCS < 2) && (exmination.WBES >= 1 && exmination.WBES < 2) &&
-                    (exmination.PLT >= 1 && exmination.PLT < 2))
+                else if (((exmination.RBCS >= 5 && exmination.RBCS < 6) || (exmination.RBCS >= 500 && exmination.RBCS < 600)) && ((exmination.WBES >= 13 && exmination.WBES < 15 )||
+                    (exmination.WBES >= 130 && exmination.WBES < 150)) &&
+                    (exmination.PLT >= 200 && exmination.PLT < 330))
                 {
                     exmination.Result = "Secondcancer";
                 }
-                else if ((exmination.RBCS >= 2 && exmination.RBCS < 3) && (exmination.WBES >= 2 && exmination.WBES < 3) &&
-                    (exmination.PLT >= 2 && exmination.PLT < 3))
+                else if (((exmination.RBCS >= 5 && exmination.RBCS < 6) || (exmination.RBCS >= 500 && exmination.RBCS < 600)) && ((exmination.WBES >= 13 && exmination.WBES < 15) ||
+                    (exmination.WBES >= 130 && exmination.WBES < 150)) &&
+                    (exmination.PLT >= 340 && exmination.PLT < 500))
                 {
                     exmination.Result = "Thirdcancer";
                 }
@@ -196,18 +198,21 @@ namespace CBT.Controllers
                         exmination.PLT = (float)Convert.ToDouble(platelets);
                         //check if patinnt hava cancer or no 
 
-                        if (exmination.RBCS < 1 && exmination.WBES < 1 &&
-                            exmination.PLT < 1)
+
+                        if (exmination.RBCS <= 1 && exmination.WBES <= 1 &&
+                                    exmination.PLT <= 1)
                         {
                             exmination.Result = "firstCancer";
                         }
-                        else if((exmination.RBCS >= 1 && exmination.RBCS < 2 ) && (exmination.WBES >= 1 && exmination.WBES < 2) &&
-                            (exmination.PLT >= 1 && exmination.PLT < 2))
+                        else if (((exmination.RBCS >= 5 && exmination.RBCS < 6) || (exmination.RBCS >= 500 && exmination.RBCS < 600)) && ((exmination.WBES >= 13 && exmination.WBES < 15) ||
+                            (exmination.WBES >= 130 && exmination.WBES < 150)) &&
+                            (exmination.PLT >= 200 && exmination.PLT < 330))
                         {
                             exmination.Result = "SecondCancer";
                         }
-                        else if ((exmination.RBCS >= 2 && exmination.RBCS < 3) && (exmination.WBES >= 2 && exmination.WBES < 3) &&
-                            (exmination.PLT >= 2 && exmination.PLT < 3))
+                        else if (((exmination.RBCS >= 5 && exmination.RBCS < 6) || (exmination.RBCS >= 500 && exmination.RBCS < 600)) && ((exmination.WBES >= 13 && exmination.WBES < 15) ||
+                            (exmination.WBES >= 130 && exmination.WBES < 150)) &&
+                            (exmination.PLT >= 340 && exmination.PLT < 500))
                         {
                             exmination.Result = "ThirdCancer";
                         }
@@ -234,19 +239,19 @@ namespace CBT.Controllers
         public IActionResult ResultExamination(Eximination eximination)
         {
             List<Treatment> treatments;
-            if (eximination.Result.ToLower().Equals("firstCancer"))
+            if (eximination.Result.Equals("firstCancer"))
             {
                  treatments = _context.Treatments.Where
                     (treatment => treatment.orderOfCancer ==1).ToList();
                 ViewBag.Treatments = treatments;
             }
-            else if (eximination.Result.ToLower().Equals("SecondCancer"))
+            else if (eximination.Result.Equals("SecondCancer"))
             {
                 treatments = _context.Treatments.Where
                     (treatment => treatment.orderOfCancer == 2).ToList();
                 ViewBag.Treatments = treatments;
             }
-            else if (eximination.Result.ToLower().Equals("ThirdCancer"))
+            else if (eximination.Result.Equals("ThirdCancer"))
             {
                 treatments = _context.Treatments.Where
                     (treatment => treatment.orderOfCancer == 3).ToList();
