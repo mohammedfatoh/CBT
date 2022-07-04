@@ -3,6 +3,18 @@
 
 // Write your JavaScript code.
 $(document).ready(function () {
+
+    $(".main").animate({
+        top: "50%"
+    },0, function () {
+        $(this).animate({
+            height: "200p"
+        }, 100, function () {
+            $(".log").slideDown(500)
+        });
+    });
+
+
     $(".center").animate({
         top: "50px"
     }, 500, function () {
