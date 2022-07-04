@@ -59,20 +59,20 @@ namespace CBT.Controllers
                 }
                 //check if patinnt hava cancer or no 
 
-                if (exmination.RBCS < 1 && exmination.WBES < 1 &&
-                            exmination.PLT < 1)
+                if (exmination.RBCS < 4 && exmination.RBCS >3 && exmination.WBES < 20 && exmination.WBES > 16 &&
+                            exmination.PLT < 150)
                 {
-                    exmination.Result = "firstCancer";
+                    exmination.Result = "firstcancer";
                 }
                 else if ((exmination.RBCS >= 1 && exmination.RBCS < 2) && (exmination.WBES >= 1 && exmination.WBES < 2) &&
                     (exmination.PLT >= 1 && exmination.PLT < 2))
                 {
-                    exmination.Result = "SecondCancer";
+                    exmination.Result = "Secondcancer";
                 }
                 else if ((exmination.RBCS >= 2 && exmination.RBCS < 3) && (exmination.WBES >= 2 && exmination.WBES < 3) &&
                     (exmination.PLT >= 2 && exmination.PLT < 3))
                 {
-                    exmination.Result = "ThirdCancer";
+                    exmination.Result = "Thirdcancer";
                 }
                 else
                 {
