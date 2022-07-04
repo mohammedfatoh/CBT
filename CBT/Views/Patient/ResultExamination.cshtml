@@ -1,11 +1,11 @@
 ﻿@model Eximination
 
-@if(Model.Result.ToLower().Equals("healthy"))
+@if(Model.Result.Equals("healthy"))
 {
     
         <h1>Advices</h1>
 }
-else if (Model.Result.ToLower().Equals("firstCancer"))
+else if (Model.Result.Equals("firstCancer"))
 {
     <select class="form form-control">
     @foreach (var item in ViewBag.Treatments)
@@ -39,7 +39,7 @@ else if (Model.Result.ToLower().Equals("firstCancer"))
 </div>
 
 }
-else if (Model.Result.ToLower().Equals("SecondCancer"))
+else if (Model.Result.Equals("SecondCancer"))
 {
     
     <select class="form form-control">
