@@ -59,7 +59,7 @@ namespace CBT.Controllers
                 }
                 //check if patinnt hava cancer or no 
 
-                if (exmination.RBCS < 4 && exmination.RBCS >3 && exmination.WBES < 20 && exmination.WBES > 16 &&
+                if (exmination.RBCS <= 1 && exmination.WBES < 20 &&
                             exmination.PLT < 150)
                 {
                     exmination.Result = "firstcancer";
