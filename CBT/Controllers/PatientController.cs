@@ -62,26 +62,26 @@ namespace CBT.Controllers
                 if (exmination.RBCS <= 1 && exmination.WBES < 20 &&
                             exmination.PLT < 150)
                 {
-                    exmination.Result = "firstcancer";
+                    exmination.Result = "firstCancer";
                 }
                 else if (((exmination.RBCS >= 5 && exmination.RBCS < 6) || (exmination.RBCS >= 500 && exmination.RBCS < 600)) && ((exmination.WBES >= 13 && exmination.WBES < 15 )||
                     (exmination.WBES >= 130 && exmination.WBES < 150)) &&
                     (exmination.PLT >= 200 && exmination.PLT < 330))
                 {
-                    exmination.Result = "Secondcancer";
+                    exmination.Result = "SecondCancer";
                 }
                 else if (((exmination.RBCS >= 5 && exmination.RBCS < 6) || (exmination.RBCS >= 500 && exmination.RBCS < 600)) && ((exmination.WBES >= 13 && exmination.WBES < 15) ||
                     (exmination.WBES >= 130 && exmination.WBES < 150)) &&
                     (exmination.PLT >= 340 && exmination.PLT < 500))
                 {
-                    exmination.Result = "Thirdcancer";
+                    exmination.Result = "ThirdCancer";
                 }
                 else
                 {
                     exmination.Result = "healthy";
                 }
 
-
+                exmination.Createddate = DateTime.Now;
 
                 await _context.Eximinations.AddAsync(exmination);
                await _context.SaveChangesAsync();
@@ -220,6 +220,8 @@ namespace CBT.Controllers
                         {
                             exmination.Result = "healthy";
                         }
+
+                        exmination.Createddate = DateTime.Now;
 
                         await _context.Eximinations.AddAsync(exmination);
                         await _context.SaveChangesAsync();

@@ -4,18 +4,40 @@
 {
     
         <h1>Advices</h1>
+
 }
 else if (Model.Result.Equals("firstCancer"))
 {
-    <select class="form form-control">
-    @foreach (var item in ViewBag.Treatments)
-    {
-        <option>@item.Name</option>
-    }
-    </select>
-    
-    <h1>Tratement@(Model.MCH)</h1>
+<div style="background-color:rgb(0, 0, 0, 0.85);text-align:center;width:700px;margin:auto;border-radius:20px;margin-bottom:10px;height:auto;color:white;padding:15px;font-size:20px;margin-top:50px">
+<p>" We are sad to inform you that you are in the <span style="color:red">first stage of cancer</span>, so please adhere to the following treatment in the list for your own safety "</p></div>
+<div style="background-color:rgb(0, 0, 0, 0.85);text-align:center;width:550px;margin:auto;border-radius:20px">
+   
+    <table class="table text-light">
+      <thead>
+        <tr >
+          <th style="font-size:20px;padding:20px" scope="col">TreatmentName</th>
+          <th style="font-size:20px;padding:20px" scope="col">Quantity (Every day)</th>
+        </tr>
+      </thead>
+      <tbody>
+        
+          @foreach (var item in ViewBag.Treatments){
+          <tr>
+          <td>@item.Name</td>
+          <td>@item.Amount</td>
+          </tr>
+          }
+        
+      </tbody>
+    </table>
+       
+</div>
 
+}
+else if (Model.Result.Equals("SecondCancer"))
+{
+ <div style="background-color:rgb(0, 0, 0, 0.85);text-align:center;width:700px;margin:auto;border-radius:20px;margin-bottom:10px;height:auto;color:white;padding:15px;font-size:20px;margin-top:50px">
+<p>" We are sad to inform you that you are in the <span style="color:red">Second stage of cancer</span>, so please adhere to the following treatment in the list for your own safety "</p></div>
 <div class="center2">
    
     <table class="table text-light">
@@ -26,55 +48,43 @@ else if (Model.Result.Equals("firstCancer"))
         </tr>
       </thead>
       <tbody>
-        <tr>
+        
           @foreach (var item in ViewBag.Treatments){
-          <td>@item</td>
-          <td>@item</td>
-
+          <tr>
+          <td>@item.Name</td>
+          <td>@item.Amount</td>
+          </tr>
           }
-        </tr>
+        
       </tbody>
     </table>
        
 </div>
+ 
 
 }
-else if (Model.Result.Equals("SecondCancer"))
+else if (Model.Result.Equals("ThirdCancer"))
 {
-    
-    <select class="form form-control">
-    @foreach (var item in ViewBag.Treatments)
-    {
-        <option>@item.Name</option>
-    }
-    </select>
-
-    <h1>Tratement@(Model.MCH)</h1>
-
+ <div style="background-color:rgb(0, 0, 0, 0.85);text-align:center;width:700px;margin:auto;border-radius:20px;margin-bottom:10px;height:auto;color:white;padding:15px;font-size:20px;margin-top:50px">
+<p>" We are sad to inform you that you are in the <span style="color:red">Third stage of cancer</span>, so please adhere to the following treatment in the list for your own safety "</p></div>
 <div class="center2">
-   <select class="form form-control">
-    @foreach (var item in ViewBag.Treatments)
-    {
-        <option>@item.Name</option>
-    }
-    </select>
-
-    <br/>
-
+   
     <table class="table text-light">
       <thead>
         <tr>
-           <th scope="col">#</th>
           <th scope="col">TreatmentName</th>
           <th scope="col">Quantity</th>
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <th scope="row">1</th>
-          <td>D</td>
-          <td>3</td>
-        </tr>
+        
+          @foreach (var item in ViewBag.Treatments){
+          <tr>
+          <td>@item.Name</td>
+          <td>@item.Amount</td>
+          </tr>
+          }
+        
       </tbody>
     </table>
        
