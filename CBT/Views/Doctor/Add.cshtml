@@ -5,6 +5,7 @@
 }
 
 <form asp-action="Add" method="post" >
+     <div style="background-color:rgb(0, 0, 0, 0.85);padding:20px;border-radius:30px;margin-top:75px">
     <h4 style="color:white;text-align:center">Create a New Doctor</h4>
     <hr style="color:antiquewhite" />
             <div asp-validation-summary="All" class="text-danger"></div>
@@ -47,21 +48,24 @@
                 <input asp-for="ConfirmPassword" class="form-control" style="display:inline;width:400px" />
                  <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
             </div>
-            <hr/>
+            </div>
+            <hr style="font-weight:900;color:wheat"/>
+            <div style="background-color:rgb(0, 0, 0, 0.85);padding:20px;border-radius:30px;">
             <h6 style=" color:white;font-size:30px;text-align:center">Roles</h6>
-            
-            @for (int i = 0; i < Model.Roles.Count; i++)
+            <hr style="font-weight:900;color:wheat"/>
+                @for (int i = 0; i < Model.Roles.Count; i++)
             {
-                <div class="form-check m-1">
+                <div class="form-check m-1" style="color:white ;display:inline-block;margin-left:120px !important;">
                     <input type="hidden" asp-for="@Model.Roles[i].RoleName" />
-                    <input asp-for="@Model.Roles[i].isSelected" class="form-check-input" />
-                    <label class="form-check-label" asp-for="@Model.Roles[i].isSelected">
+                    <input asp-for="@Model.Roles[i].isSelected" class="form-check-input"  style="margin-right:10px"/>
+                    <label class="form-check-label" asp-for="@Model.Roles[i].isSelected" style="vertical-align:central">
                         @Model.Roles[i].RoleName
                     </label>
                 </div>
             }
+            </div>
             <span asp-validation-for="Roles" class="text-danger"></span>
-            <button   type="submit" class="btn btn-primary d-block mt-4">Sava</button>
+            <button   type="submit" class="btn btn-primary d-block mt-4" style="font-size:20px;margin:auto;width:200px;background-color:green;border-radius:10px;">Sava</button>
 </form>
 
 @section Scripts {

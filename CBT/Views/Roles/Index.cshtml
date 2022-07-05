@@ -3,7 +3,7 @@
 @{
     ViewData["Title"] = "Roles";
 }
-
+<div style="width:500px;margin:auto;background-color:rgb(0, 0, 0, 0.85);padding:20px;border-radius:30px;margin-top:75px">
 <h1>Roles</h1>
 
 <partial name="_RoleForm" model="new RoleFormViewModel()" />
@@ -18,7 +18,7 @@
     <tbody>
         @foreach (var role in Model)
         {
-            <tr>
+            <tr style="color:white ;font-size:18px">
                 @*<td>@role.Id</td>*@
                 <td>@role.Name</td>
             </tr>
@@ -29,3 +29,4 @@
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
 }
+</div>

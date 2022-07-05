@@ -69,7 +69,7 @@ namespace CBT.Data
         public virtual DbSet<Laboratory> Laboratories { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Data Source=DESKTOP-17LHCQ4;Initial Catalog=CBT_DBB;Integrated Security=True; MultipleActiveResultSets=true");
+            optionsBuilder.UseSqlServer("Data Source=AHMEDMOSTAFA;Initial Catalog=CBT_DB;Integrated Security=True; MultipleActiveResultSets=true");
         }
     }
 }

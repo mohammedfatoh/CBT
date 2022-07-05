@@ -8,23 +8,24 @@
   <div class="accordion-item">
     <h2 class="accordion-header" id="headingOne">
       <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-        @item.NamePatient 
-        @item.Createddate
+        <span style="font-size:20px; font-weight:bold">@item.NamePatient </span>
+        <span style="position:absolute;right:90px">@item.Createddate </span>
       </button>
     </h2>
     <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
       <div class="accordion-body">
-       <span>RBCS =</span> @item.RBCS <br>
-       <span>WBES =</span> @item.WBES <br>
-       <span>PLT =</span> @item.PLT   <br>
-       <span>hemoglobin =</span> @item.hemoglobin  <br>
-       <span>MCHC =</span> @item.MCHC  <br>
-       <span>MCH =</span> @item.MCH         
+       <span>RBCS =</span> @item.RBCS 
+       <span style="margin-left:90px">WBES =</span> @item.WBES 
+       <span style="margin-left:90px">PLT =</span> @item.PLT   
+       <span style="margin-left:90px">hemoglobin =</span> @item.hemoglobin  
+       <span style="margin-left:90px">MCHC =</span> @item.MCHC  
+       <span style="margin-left:90px">MCH =</span> @item.MCH
       </div>
     </div>
   </div>
 
 </div>
+<br />
 }
 
 
