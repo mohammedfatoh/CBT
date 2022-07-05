@@ -126,8 +126,11 @@ namespace CBT.Controllers
                 string fileName = string.Empty;
                 if (exmination.File != null)
                 {
+                    Random rd = new Random();
+                    int rand_num = rd.Next(100, 200);
+
                     string uploads = Path.Combine(hosting.WebRootPath, "ExminationImages");
-                    fileName = exmination.File.FileName;
+                    fileName = rand_num + exmination.File.FileName;
                     string fullPath = Path.Combine(uploads, fileName);
                     exmination.File.CopyTo(new FileStream(fullPath, FileMode.Create));
                     exmination.ImgUrl = fullPath;
