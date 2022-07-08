@@ -14,7 +14,7 @@ CBT
 ![5](https://user-images.githubusercontent.com/65139875/177998859-751b43a1-63dd-4189-9570-0eb294d60a1a.png)
 ![6](https://user-images.githubusercontent.com/65139875/177998882-5863cc4c-838e-4f37-a2df-87099a74b9ee.png)
 ![7](https://user-images.githubusercontent.com/65139875/177998992-1b3cf7cb-145d-46ff-ae0a-33ff4ff57523.png)
-![8](https://user-images.githubusercontent.com/65139875/177999000-3348ae3a-70c5-4d76-a12d-d9ee651b5f44.png)
+
 ![9](https://user-images.githubusercontent.com/65139875/177999020-9c13ef60-eac7-42f8-97e8-fbd66f729c81.png)
 
 ![10](https://user-images.githubusercontent.com/65139875/177999285-a08fdde3-29f4-415c-b3dd-dc8c1d508adb.png)
