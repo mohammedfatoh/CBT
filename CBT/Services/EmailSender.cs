@@ -8,8 +8,8 @@ namespace CBT.Services
     {
         public async Task SendEmailAsync(string email, string subject, string htmlMessage)
         {
-            var fromMail = "mohammedfatoh0@gmail.com";
-            var fromPassword = "moh.54tr";
+            var fromMail = "";
+            var fromPassword = "";
 
             var message = new MailMessage();
             message.From = new MailAddress(fromMail);
