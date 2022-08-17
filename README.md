@@ -1,6 +1,37 @@
 CBT
 
+The idea of the project is based on determining if the user suffers from this disease by adding pictures of some analyzes without the need to go to the doctor.
 
+There are many diseases that can be detected by a blood test, which helps in treating them early. Here are some diseases that can be detected by a blood test,
+Among these diseases:
+1- Cancer.
+2-	diabetes.
+3-	Anemia.
+4-	General assessment of the condition of the body
+for examples: Hepatitis C and hepatitis B.
+
+in This website :
+The user can attach a picture of the analysis to identify what is in the analysis and also can enter some values to identify the presence of blood cancer or not.
+- The user is given details of the analysis percentages.
+- Anyone can interact with the site.
+-	The user can identify what is in it without going to the doctor.
+-	The web site is free.
+-	This site helps people who suffer from some fatigue and do not have the money to go to a doctor to diagnose them
+-	The user can register on the site using his personal data, and the site will follow up on his condition and prescribe the appropriate treatment for him and describe exactly how bad the disease is.
+-	after the user adds the image or enters the values, the result will appear for you in the page.
+-	The user can review the previous reports that were analyzed in the past.
+-	The site is able to give the patient treatment if he asks for it.
+-	The user can communicate with some of the doctors there, if any, for a consultation.
+
+
+•	tools that we use:
+-	Front end (HTML, CSS, Java Script).
+-	Back end (Asp.net core 6 MVC,EntityFramework,Microsoft Identity ,SQLServer) .
+-	OCR and Computer Vision.
+-	MSql.
+-	Entity framework.
+-	Jquery
+-	Bootstrap
 
 
 
