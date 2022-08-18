@@ -26,7 +26,7 @@ The user can attach a picture of the analysis to identify what is in the analysi
 
 •	tools that we use:
 -	Front end (HTML, CSS, Java Script).
--	Back end (Asp.net core 6 MVC,EntityFramework,Microsoft Identity ,SQLServer) .
+-	Back end (Asp.net core 6 MVC,Asp.Net Web API,EntityFramework,Microsoft Identity ,SQLServer) .
 -	OCR and Computer Vision.
 -	MSql.
 -	Entity framework.
